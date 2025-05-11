@@ -6,7 +6,6 @@ import Link from "next/link";
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
 
-  // Handle scroll effect for navbar and video opacity
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -21,13 +20,12 @@ export default function Home() {
 
   return (
     <div style={{ background: "#000", color: "#fff", fontFamily: "Arial, sans-serif", overflowX: "hidden" }}>
-      {/* Navigation Bar */}
       <nav
         style={{
           position: "fixed",
           top: 0,
           width: "100%",
-          padding: "20px 50px",
+          padding: "15px 40px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -37,30 +35,34 @@ export default function Home() {
         }}
       >
         <div>
-          <Link href="/" style={{ color: "#fff", fontSize: "24px", fontWeight: "bold", textDecoration: "none" }}>
+          <Link href="/" style={{ color: "#fff", fontSize: "20px", fontWeight: "bold", textDecoration: "none" }}>
             Axorizen
           </Link>
         </div>
-        <div style={{ display: "flex", gap: "30px" }}>
-          <Link href="/projects" style={{ color: "#fff", textDecoration: "none", fontSize: "16px" }}>
+        <div style={{ display: "flex", gap: "25px" }}>
+          <Link href="/projects" style={{ color: "#fff", textDecoration: "none", fontSize: "14px" }}>
             Projects
           </Link>
-          <Link href="/about" style={{ color: "#fff", textDecoration: "none", fontSize: "16px" }}>
+          <Link href="/about" style={{ color: "#fff", textDecoration: "none", fontSize: "14px" }}>
             About
           </Link>
-          <Link href="/contact" style={{ color: "#fff", textDecoration: "none", fontSize: "16px" }}>
+          <Link href="/contact" style={{ color: "#fff", textDecoration: "none", fontSize: "14px" }}>
             Contact
           </Link>
         </div>
       </nav>
 
-      {/* Video Section */}
-      <section style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
-        <video autoPlay muted loop style={{ width: "100%", height: "100%", objectFit: "cover" }}>
-  <source src="/video/slider-video.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-        {/* Text Overlay */}
+      <section style={{ position: "relative", height: "100vh", marginTop: "60px", overflow: "hidden" }}>
+        <video
+          autoPlay
+          muted
+          loop
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        >
+          <source src="/video/slider-video.mp4" type="video/mp4" />
+          <p>Video failed to load.</p>
+        </video>
+
         <div
           style={{
             position: "absolute",
@@ -68,21 +70,19 @@ export default function Home() {
             left: "50%",
             transform: "translate(-50%, -50%)",
             textAlign: "center",
-            color: "#fff",
-            opacity: scrolled ? 0.7 : 1, // Fade text on scroll
-            transition: "opacity 0.3s",
+            color: "#000",
+            textShadow: "2px 2px 4px rgba(255, 255, 255, 0.7)",
           }}
         >
-          <h1 style={{ fontSize: "72px", fontWeight: "bold", margin: 0, letterSpacing: "2px" }}>
+          <h1 style={{ fontSize: "80px", fontWeight: "bold", margin: "0 0 15px 0", letterSpacing: "3px" }}>
             Axorizen
           </h1>
-          <p style={{ fontSize: "24px", marginTop: "10px", letterSpacing: "1px" }}>
+          <p style={{ fontSize: "28px", margin: 0, letterSpacing: "2px" }}>
             Crafting Professional Web Design Solutions
           </p>
         </div>
       </section>
 
-      {/* Additional Content Section */}
       <section style={{ padding: "100px 50px", textAlign: "center", background: "#000" }}>
         <h2 style={{ fontSize: "32px", borderBottom: "2px solid #fff", paddingBottom: "10px", display: "inline-block" }}>
           Welcome to Axorizen
