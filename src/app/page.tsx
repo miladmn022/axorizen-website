@@ -56,25 +56,10 @@ export default function Home() {
 
       {/* Video Section */}
       <section style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
-        <video
-          autoPlay
-          muted
-          loop
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            position: "absolute",
-            top: 0,
-            left: 0,
-            zIndex: -1,
-            opacity: scrolled ? 0.3 : 1, // Fade effect on scroll
-            transition: "opacity 0.3s",
-          }}
-        >
-          <source src="/video/slider-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <video autoPlay muted loop style={{ width: "100%", height: "100%", objectFit: "cover" }}>
+  <source src="/video/slider-video.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
         {/* Text Overlay */}
         <div
           style={{
