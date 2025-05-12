@@ -8,20 +8,16 @@
       --tw-skew-x: initial;
       --tw-skew-y: initial;
       --tw-border-style: solid;
-      --tw-font-weight: initial;
-      --tw-duration: initial;
+      --tw-ease: initial;
     }
   }
 }
 
 @layer theme {
   :root, :host {
-    --color-black: #000;
     --color-white: #fff;
     --spacing: .25rem;
-    --text-xs: .75rem;
-    --text-xs--line-height: calc(1 / .75);
-    --font-weight-bold: 700;
+    --ease-out: cubic-bezier(0, 0, .2, 1);
     --default-transition-duration: .15s;
     --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     --default-font-family: var(--font-geist-sans);
@@ -218,6 +214,10 @@
     pointer-events: none;
   }
 
+  .visible {
+    visibility: visible;
+  }
+
   .absolute {
     position: absolute;
   }
@@ -242,6 +242,10 @@
     z-index: 9999;
   }
 
+  .block {
+    display: block;
+  }
+
   .flex {
     display: flex;
   }
@@ -254,20 +258,20 @@
     display: inline-block;
   }
 
-  .h-6 {
-    height: calc(var(--spacing) * 6);
+  .h-3 {
+    height: calc(var(--spacing) * 3);
   }
 
-  .h-24 {
-    height: calc(var(--spacing) * 24);
+  .h-10 {
+    height: calc(var(--spacing) * 10);
   }
 
-  .w-6 {
-    width: calc(var(--spacing) * 6);
+  .w-3 {
+    width: calc(var(--spacing) * 3);
   }
 
-  .w-24 {
-    width: calc(var(--spacing) * 24);
+  .w-10 {
+    width: calc(var(--spacing) * 10);
   }
 
   .transform {
@@ -291,26 +295,8 @@
     border-width: 1px;
   }
 
-  .border-white {
-    border-color: var(--color-white);
-  }
-
   .bg-white {
     background-color: var(--color-white);
-  }
-
-  .text-xs {
-    font-size: var(--text-xs);
-    line-height: var(--tw-leading, var(--text-xs--line-height));
-  }
-
-  .font-bold {
-    --tw-font-weight: var(--font-weight-bold);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .text-black {
-    color: var(--color-black);
   }
 
   .mix-blend-difference {
@@ -323,15 +309,9 @@
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
 
-  .transition-all {
-    transition-property: all;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-  }
-
-  .duration-300 {
-    --tw-duration: .3s;
-    transition-duration: .3s;
+  .ease-out {
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
   }
 }
 
@@ -348,9 +328,18 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background, #000);
+  color: var(--foreground, #fff);
+  cursor: none;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+img {
+  visibility: visible !important;
+  display: block !important;
 }
 
 @property --tw-rotate-x {
@@ -384,12 +373,7 @@ body {
   initial-value: solid;
 }
 
-@property --tw-font-weight {
-  syntax: "*";
-  inherits: false
-}
-
-@property --tw-duration {
+@property --tw-ease {
   syntax: "*";
   inherits: false
 }

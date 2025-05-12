@@ -1,19 +1,20 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 
-const CursorContext = createContext({
-  setHovering: (value: boolean, text?: string) => {},
+interface CursorContextType {
+  setHovering: (value: boolean) => void;
+}
+
+const CursorContext = createContext<CursorContextType>({
+  setHovering: () => {},
 });
 
 export const CursorProvider = ({ children }: { children: React.ReactNode }) => {
-  const [setIsHovering] = useState<(val: boolean) => void>(() => () => {});
-  const [setCursorText] = useState<(text: string) => void>(() => () => {});
-
-  const setHovering = (value: boolean, text = "") => {
+  const setHovering = (value: boolean) => {
     document.dispatchEvent(
       new CustomEvent("cursor-hover", {
-        detail: { isHovering: value, text },
+        detail: { isHovering: value },
       })
     );
   };
