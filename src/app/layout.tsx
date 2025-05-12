@@ -4,6 +4,7 @@ import CustomCursor from './components/CustomCursor';
 import { CursorProvider } from './context/CursorProvider';
 
 
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {

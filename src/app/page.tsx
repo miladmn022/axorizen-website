@@ -8,11 +8,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -35,30 +31,99 @@ export default function Home() {
         }}
       >
         <div>
-          <Link href="/" style={{ color: "#fff", fontSize: "20px", fontWeight: "bold", textDecoration: "none" }}>
+          <Link
+            href="/"
+            style={{
+              color: "#fff",
+              fontSize: "20px",
+              fontWeight: "bold",
+              textDecoration: "none",
+            }}
+            onMouseEnter={() =>
+              window.dispatchEvent(
+                new CustomEvent("cursor-hover", {
+                  detail: { isHovering: true, text: "Home" },
+                })
+              )
+            }
+            onMouseLeave={() =>
+              window.dispatchEvent(
+                new CustomEvent("cursor-hover", {
+                  detail: { isHovering: false },
+                })
+              )
+            }
+          >
             Axorizen
           </Link>
         </div>
+
         <div style={{ display: "flex", gap: "25px" }}>
-          <Link href="/projects" style={{ color: "#fff", textDecoration: "none", fontSize: "14px" }}>
+          <Link
+            href="/projects"
+            style={{ color: "#fff", textDecoration: "none", fontSize: "14px" }}
+            onMouseEnter={() =>
+              window.dispatchEvent(
+                new CustomEvent("cursor-hover", {
+                  detail: { isHovering: true, text: "Projects" },
+                })
+              )
+            }
+            onMouseLeave={() =>
+              window.dispatchEvent(
+                new CustomEvent("cursor-hover", {
+                  detail: { isHovering: false },
+                })
+              )
+            }
+          >
             Projects
           </Link>
-          <Link href="/about" style={{ color: "#fff", textDecoration: "none", fontSize: "14px" }}>
+          <Link
+            href="/about"
+            style={{ color: "#fff", textDecoration: "none", fontSize: "14px" }}
+            onMouseEnter={() =>
+              window.dispatchEvent(
+                new CustomEvent("cursor-hover", {
+                  detail: { isHovering: true, text: "About" },
+                })
+              )
+            }
+            onMouseLeave={() =>
+              window.dispatchEvent(
+                new CustomEvent("cursor-hover", {
+                  detail: { isHovering: false },
+                })
+              )
+            }
+          >
             About
           </Link>
-          <Link href="/contact" style={{ color: "#fff", textDecoration: "none", fontSize: "14px" }}>
+          <Link
+            href="/contact"
+            style={{ color: "#fff", textDecoration: "none", fontSize: "14px" }}
+            onMouseEnter={() =>
+              window.dispatchEvent(
+                new CustomEvent("cursor-hover", {
+                  detail: { isHovering: true, text: "Contact" },
+                })
+              )
+            }
+            onMouseLeave={() =>
+              window.dispatchEvent(
+                new CustomEvent("cursor-hover", {
+                  detail: { isHovering: false },
+                })
+              )
+            }
+          >
             Contact
           </Link>
         </div>
       </nav>
 
       <section style={{ position: "relative", height: "100vh", marginTop: "60px", overflow: "hidden" }}>
-        <video
-          autoPlay
-          muted
-          loop
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        >
+        <video autoPlay muted loop style={{ width: "100%", height: "100%", objectFit: "cover" }}>
           <source src="/video/slider-video.mp4" type="video/mp4" />
           <p>Video failed to load.</p>
         </video>
