@@ -4,24 +4,18 @@ export default function TwoImagesSection() {
   const scrolled = useScroll();
 
   // ارتفاع‌ها
-  const leftImageHeight = 400; // ارتفاع عکس چپ
-  const rightImageHeight = 800; // ارتفاع عکس راست
-  const navBarHeight = 50; // ارتفاع تقریبی نویگیشن بار
+  const leftImageHeight = 400; // ارتفاع عکس چپ (می‌تونی با سایت مرجع تنظیم کنی)
+  const rightImageHeight = 800; // ارتفاع عکس راست (2 برابر چپ)
+  const navBarHeight = 50; // ارتفاع تقریبی نویگیشن بار (باید با NavBar دقیق تنظیم بشه)
 
-  // موقعیت دقیق بخش نسبت به بالای صفحه (باید با ابزار توسعه‌دهنده تنظیم بشه)
-  const sectionTop = 1600; // مقدار تقریبی، لطفاً با F12 > Elements دقیق کن
+  // موقعیت دقیق بخش نسبت به بالای صفحه
+  const sectionTop = 1600; // مقدار تقریبی، با F12 > Elements دقیق کن
 
   // موقعیت پایین بخش
   const sectionBottom = sectionTop + rightImageHeight;
 
-  // محاسبه موقعیت اسکرول نسبت به بخش
-  const scrollRelativeToSection = Math.max(0, scrolled - sectionTop);
-
   // sticky تا وقتی پایین بخش از دید خارج نشده فعال باشه
   const isSticky = scrolled < sectionBottom - navBarHeight;
-
-  // محاسبه زوم بر اساس ImageSection
-  const zoom = 1 + scrollRelativeToSection / 2000; // زوم کند و نرم
 
   return (
     <section
@@ -29,7 +23,7 @@ export default function TwoImagesSection() {
         position: "relative",
         minHeight: `${rightImageHeight}px`,
         padding: "0 10px",
-        overflow: "visible", // مطمئن می‌شیم overflow مانع sticky نشه
+        overflow: "visible",
         display: "flex",
         gap: "10px",
       }}
@@ -52,9 +46,6 @@ export default function TwoImagesSection() {
             objectFit: "cover",
             display: "block",
             visibility: "visible",
-            transform: `scale(${zoom})`,
-            transformOrigin: "center center",
-            transition: "transform 0.3s ease-out",
           }}
           onError={(e) => {
             console.error("Image 2 failed to load. Check path: /images/image-2.jpg", e);
@@ -81,9 +72,6 @@ export default function TwoImagesSection() {
             objectFit: "cover",
             display: "block",
             visibility: "visible",
-            transform: `scale(${zoom})`,
-            transformOrigin: "center center",
-            transition: "transform 0.3s ease-out",
           }}
           onError={(e) => {
             console.error("Image 3 failed to load. Check path: /images/image-3.jpg", e);

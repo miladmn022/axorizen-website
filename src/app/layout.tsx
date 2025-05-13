@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import CustomCursor from "./components/CustomCursor";
 import { CursorProvider } from "./context/CursorProvider";
+import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,8 +25,10 @@ export default function RootLayout({
         <CursorProvider>
           <CustomCursor />
           {children}
+          <Footer /> {/* اضافه کردن فوتر به انتها */}
         </CursorProvider>
       </body>
+      
     </html>
   );
 }
