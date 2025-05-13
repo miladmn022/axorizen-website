@@ -1,41 +1,67 @@
-import useScroll from "../hooks/useScroll";
+import { useEffect, useState, useRef } from "react";
 
 export default function TextWithEffect() {
-  const scrolled = useScroll();
+  const textLines = [
+    ["W", "e", " ", "A", "r", "e", " ", "C", "r", "a", "f", "t", "i", "n", "g"],
+    ["P", "r", "o", "f", "e", "s", "s", "i", "o", "n", "a", "l"],
+    ["W", "e", "b", " ", "D", "e", "s", "i", "g", "n", " ", "S", "o", "l", "u", "t", "i", "o", "n", "s"]
+  ];
+
+  const sectionRefs = textLines.map(() => useRef(null));
+  const [visibleLines, setVisibleLines] = useState(Array(textLines.length).fill(false));
+
+  useEffect(() => {
+    const handleScroll = () => {
+      sectionRefs.forEach((ref, index) => {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect();
+          setVisibleLines((prev) => {
+            const updatedLines = [...prev];
+            updatedLines[index] = rect.top < window.innerHeight * 0.85 && rect.bottom > window.innerHeight * 0.35; 
+            return updatedLines;
+          });
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <section
-      style={{
-        padding: "100px 50px",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "90%",
-          margin: "0 auto 0 0",
-          textAlign: "left",
-          opacity: scrolled > 900 ? 1 : 0,
-          transform: `translateY(${scrolled > 900 ? 0 : 50}px)`,
-          transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
-        }}
-      >
-        <p
-          style={{
-            fontSize: "80px",
-            fontWeight: "bold",
-            fontFamily: "Times New Roman, serif",
-            margin: "0",
-            letterSpacing: "8px",
-            lineHeight: "1.1",
-            textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)",
-          }}
-        >
-          We Are Crafting
-          <br />
-          <span style={{ paddingLeft: "60px" }}>Professional</span>
-          <br />
-          Web Design Solutions
-        </p>
+    <section style={{ padding: "100px 50px" }}>
+      <div style={{ maxWidth: "90%", margin: "0 auto 0 0", textAlign: "left" }}>
+        {textLines.map((line, lineIndex) => (
+          <p
+            key={lineIndex}
+            ref={sectionRefs[lineIndex]}
+            style={{
+              fontSize: "100px",
+              fontWeight: "bold",
+              fontFamily: "Times New Roman, serif",
+              margin: "0",
+              letterSpacing: "6px",
+              lineHeight: "1.6",
+              textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)",
+              paddingLeft: lineIndex === 1 ? "80px" : "0px",
+            }}
+          >
+            {line.map((char, charIndex) => (
+              <span
+                key={charIndex}
+                style={{
+                  opacity: visibleLines[lineIndex] ? 1 : 0,
+                  transform: visibleLines[lineIndex] ? "translateY(0)" : "translateY(25px)",
+                  transition: `opacity 0.4s ease-out ${charIndex * 0.05}s, transform 0.4s ease-out ${charIndex * 0.05}s`,
+                  display: "inline-block",
+                  marginRight: char === " " ? "15px" : "0px",
+                }}
+              >
+                {char}
+              </span>
+            ))}
+          </p>
+        ))}
       </div>
     </section>
   );
