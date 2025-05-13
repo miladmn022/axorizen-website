@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import NavBar from "./components/NavBar";
 import VideoSection from "./components/VideoSection";
 import TextBelowVideo from "./components/TextBelowVideo";
@@ -9,12 +10,12 @@ import TextWithLink from "./components/TextWithLink";
 import TwoImagesSection from "./components/TwoImagesSection";
 import FinalText from "./components/FinalText";
 import MirroredImageSection from "./components/MirroredImageSection";
-import TextSectionWithLink from "./components/TextSectionWithLink"; // اضافه شده
-import Footer from "./components/Footer"; // اضافه شده
+import TextSectionWithLink from "./components/TextSectionWithLink";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div>
+    <Fragment>
       <NavBar />
       <VideoSection />
       <TextBelowVideo />
@@ -25,7 +26,7 @@ export default function Home() {
       <FinalText />
       <MirroredImageSection />
       <TextSectionWithLink />
-      <Footer /> {/* اضافه شده */}
-    </div>
+      <Footer />
+    </Fragment>
   );
 }

@@ -1,21 +1,23 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import useScroll from "../hooks/useScroll";
+import Image from "next/image";
 
 export default function TwoImagesSection() {
   const scrolled = useScroll();
+  const [scaleLeft, setScaleLeft] = useState(1);
+  const [scaleRight, setScaleRight] = useState(1);
 
-  // ارتفاع‌ها
-  const leftImageHeight = 400; // ارتفاع عکس چپ (می‌تونی با سایت مرجع تنظیم کنی)
-  const rightImageHeight = 800; // ارتفاع عکس راست (2 برابر چپ)
-  const navBarHeight = 50; // ارتفاع تقریبی نویگیشن بار (باید با NavBar دقیق تنظیم بشه)
+  // تنظیم ارتفاع‌ها
+  const leftImageHeight = 400;
+  const rightImageHeight = 800;
 
-  // موقعیت دقیق بخش نسبت به بالای صفحه
-  const sectionTop = 1600; // مقدار تقریبی، با F12 > Elements دقیق کن
-
-  // موقعیت پایین بخش
-  const sectionBottom = sectionTop + rightImageHeight;
-
-  // sticky تا وقتی پایین بخش از دید خارج نشده فعال باشه
-  const isSticky = scrolled < sectionBottom - navBarHeight;
+  useEffect(() => {
+    // تنظیم افکت زوم نرم هنگام اسکرول
+    setScaleLeft(1 + Math.min(scrolled / 2000, 0.15));
+    setScaleRight(1 + Math.min(scrolled / 2500, 0.12));
+  }, [scrolled]);
 
   return (
     <section
@@ -28,33 +30,32 @@ export default function TwoImagesSection() {
         gap: "10px",
       }}
     >
+      {/* تصویر چپ که حالا همزمان با اسکرول حرکت می‌کند */}
       <div
         style={{
           width: "50%",
           height: `${leftImageHeight}px`,
-          position: isSticky ? "sticky" : "relative",
-          top: isSticky ? `${navBarHeight}px` : "auto",
+          position: "relative", // حذف `sticky`
           overflow: "hidden",
         }}
       >
-        <img
+        <Image
           src="/images/image-2.jpg"
           alt="Project Image 1"
+          width={600}
+          height={leftImageHeight}
           style={{
-            width: "100%",
-            height: "100%",
             objectFit: "cover",
             display: "block",
-            visibility: "visible",
+            transform: `scale(${scaleLeft})`,
+            transformOrigin: "center center",
+            transition: "transform 0.3s ease-out",
           }}
-          onError={(e) => {
-            console.error("Image 2 failed to load. Check path: /images/image-2.jpg", e);
-          }}
-          onLoad={() => {
-            console.log("Image 2 loaded successfully");
-          }}
+          priority
         />
       </div>
+
+      {/* تصویر راست که همچنان اسکرول می‌شود */}
       <div
         style={{
           width: "50%",
@@ -63,22 +64,19 @@ export default function TwoImagesSection() {
           overflow: "hidden",
         }}
       >
-        <img
+        <Image
           src="/images/image-3.jpg"
           alt="Project Image 2"
+          width={600}
+          height={rightImageHeight}
           style={{
-            width: "100%",
-            height: "100%",
             objectFit: "cover",
             display: "block",
-            visibility: "visible",
+            transform: `scale(${scaleRight})`,
+            transformOrigin: "center center",
+            transition: "transform 0.3s ease-out",
           }}
-          onError={(e) => {
-            console.error("Image 3 failed to load. Check path: /images/image-3.jpg", e);
-          }}
-          onLoad={() => {
-            console.log("Image 3 loaded successfully");
-          }}
+          priority
         />
       </div>
     </section>

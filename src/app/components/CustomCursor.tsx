@@ -18,23 +18,25 @@ export default function CustomCursor() {
       mouseY.set(e.clientY);
     };
 
-    const handleCursorHover = (e: CustomEvent) => {
-      setIsHovering(!!e.detail?.isHovering);
+    const handleCursorHover = (e: Event) => {
+      if (e instanceof CustomEvent) {
+        setIsHovering(!!e.detail?.isHovering);
+      }
     };
 
     window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("cursor-hover", handleCursorHover as EventListener);
+    window.addEventListener("cursor-hover", handleCursorHover);
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
-      window.removeEventListener("cursor-hover", handleCursorHover as EventListener);
+      window.removeEventListener("cursor-hover", handleCursorHover);
     };
-  }, [mouseX, mouseY]);
+  }, []);
 
   return (
     <motion.div
       className={`pointer-events-none fixed z-[9999] top-0 left-0 rounded-full bg-white mix-blend-difference flex items-center justify-center
-        ${isHovering ? "w-10 h-10" : "w-3 h-3"}`}
+        ${isHovering ? "w-12 h-12" : "w-4 h-4"}`} // کمی افزایش اندازه برای تجربه بصری بهتر
       style={{
         x: springX,
         y: springY,

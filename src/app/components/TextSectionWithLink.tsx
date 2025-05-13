@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState, useRef, createRef } from "react";
 
 export default function StyledTextSection() {
   const textLines = [
@@ -8,15 +8,15 @@ export default function StyledTextSection() {
     ["A", " ", "N", "E", "W", " ", "M", "I", "N", "D", "S", "E", "T"],
     ["A", "R", "O", "U", "N", "D", " ", "D", "E", "S", "I", "G", "N"],
     ["T", "O", " ", "I", "N", "N", "O", "V", "A", "T", "E"],
-    ["L", "E", "T", "'", "S", " ", "T", "A", "L", "K", " ", "→"] // فلش اضافه شد
+    ["L", "E", "T", "'", "S", " ", "T", "A", "L", "K", " ", "→"]
   ];
 
-  const sectionRefs = textLines.map(() => useRef(null));
+  const sectionRefs = useRef(textLines.map(() => createRef()));
   const [visibleLines, setVisibleLines] = useState(Array(textLines.length).fill(false));
 
   useEffect(() => {
     const handleScroll = () => {
-      sectionRefs.forEach((ref, index) => {
+      sectionRefs.current.forEach((ref, index) => {
         if (ref.current) {
           const rect = ref.current.getBoundingClientRect();
           setVisibleLines((prev) => {
@@ -30,7 +30,7 @@ export default function StyledTextSection() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [sectionRefs.current]);
 
   return (
     <div>
@@ -39,7 +39,7 @@ export default function StyledTextSection() {
           {textLines.map((line, lineIndex) => (
             <p
               key={lineIndex}
-              ref={sectionRefs[lineIndex]}
+              ref={sectionRefs.current[lineIndex]}
               style={{
                 fontSize: lineIndex === 4 ? "56px" : "80px",
                 fontWeight: "normal",

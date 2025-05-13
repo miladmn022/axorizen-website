@@ -1,14 +1,23 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import useScroll from "../hooks/useScroll";
 
 export default function ImageSection() {
   const scrolled = useScroll();
+  const [opacity, setOpacity] = useState(0);
+
+  useEffect(() => {
+    setOpacity(scrolled > 600 ? 1 : 0);
+  }, [scrolled]);
 
   return (
     <section
       style={{
         position: "relative",
         height: "500px",
-        opacity: scrolled > 600 ? 1 : 0,
+        opacity,
         transition: "opacity 0.6s ease-out",
         overflow: "hidden",
       }}
@@ -22,16 +31,17 @@ export default function ImageSection() {
           overflow: "hidden",
         }}
       >
-        <img
+        <Image
           src="/images/image-1.jpg"
           alt="Web Design Project"
+          width={800}
+          height={500}
           style={{
-            width: "100%",
-            height: "100%",
             objectFit: "cover",
             transform: `scale(${1 + scrolled / 2000})`,
             transition: "transform 0.3s ease-out",
           }}
+          priority
         />
       </div>
     </section>

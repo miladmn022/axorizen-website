@@ -1,14 +1,24 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import useScroll from "../hooks/useScroll";
 
 export default function FinalText() {
   const scrolled = useScroll();
+  const [opacity, setOpacity] = useState(0);
+  const [translateY, setTranslateY] = useState("50px");
+
+  useEffect(() => {
+    setOpacity(scrolled > 1800 ? 1 : 0);
+    setTranslateY(scrolled > 1800 ? "0px" : "50px");
+  }, [scrolled]);
 
   return (
     <section
       style={{
         padding: "150px 50px",
-        opacity: scrolled > 1800 ? 1 : 0,
-        transform: scrolled > 1800 ? "translateY(0)" : "translateY(50px)",
+        opacity,
+        transform: `translateY(${translateY})`,
         transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
       }}
     >
@@ -22,8 +32,8 @@ export default function FinalText() {
         <p
           style={{
             fontSize: "70px",
-            fontWeight: "bold",
-            fontFamily: "Times New Roman, serif",
+            fontWeight: "normal",
+            fontFamily: "'Times New Roman', serif",
             margin: "0",
             letterSpacing: "8px",
             lineHeight: "1.1",

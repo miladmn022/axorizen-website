@@ -1,13 +1,21 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import useScroll from "../hooks/useScroll";
 
 export default function VideoSection() {
   const scrolled = useScroll();
+  const [opacity, setOpacity] = useState(1);
+
+  useEffect(() => {
+    setOpacity(1 - Math.min(scrolled / 500, 1));
+  }, [scrolled]);
 
   return (
     <section style={{ position: "relative", height: "100vh", marginTop: "60px", overflow: "hidden" }}>
       <video autoPlay muted loop style={{ width: "100%", height: "100%", objectFit: "cover" }}>
         <source src="/video/slider-video.mp4" type="video/mp4" />
-        <p>Video failed to load.</p>
+        Your browser does not support the video tag.
       </video>
       <div
         style={{
@@ -18,8 +26,8 @@ export default function VideoSection() {
           textAlign: "center",
           color: "#fff",
           textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)",
-          opacity: 1 - scrolled / 500,
-          transition: "opacity 0.3s",
+          opacity,
+          transition: "opacity 0.3s ease-in-out",
           maxWidth: "80%",
           whiteSpace: "nowrap",
         }}

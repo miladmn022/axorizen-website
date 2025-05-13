@@ -1,4 +1,6 @@
-import { useEffect, useState, useRef } from "react";
+"use client";
+
+import { useEffect, useState, useRef, createRef } from "react";
 
 export default function TextWithEffect() {
   const textLines = [
@@ -7,17 +9,18 @@ export default function TextWithEffect() {
     ["W", "e", "b", " ", "D", "e", "s", "i", "g", "n", " ", "S", "o", "l", "u", "t", "i", "o", "n", "s"]
   ];
 
-  const sectionRefs = textLines.map(() => useRef(null));
+  // رفع مشکل `useRef` با استفاده از `createRef()`
+  const sectionRefs = useRef(textLines.map(() => createRef())); 
   const [visibleLines, setVisibleLines] = useState(Array(textLines.length).fill(false));
 
   useEffect(() => {
     const handleScroll = () => {
-      sectionRefs.forEach((ref, index) => {
+      sectionRefs.current.forEach((ref, index) => {
         if (ref.current) {
           const rect = ref.current.getBoundingClientRect();
           setVisibleLines((prev) => {
             const updatedLines = [...prev];
-            updatedLines[index] = rect.top < window.innerHeight * 0.85 && rect.bottom > window.innerHeight * 0.35; 
+            updatedLines[index] = rect.top < window.innerHeight * 0.85 && rect.bottom > window.innerHeight * 0.35;
             return updatedLines;
           });
         }
@@ -26,7 +29,7 @@ export default function TextWithEffect() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [sectionRefs.current]); // افزودن وابستگی در `useEffect`
 
   return (
     <section style={{ padding: "100px 50px" }}>
@@ -34,11 +37,11 @@ export default function TextWithEffect() {
         {textLines.map((line, lineIndex) => (
           <p
             key={lineIndex}
-            ref={sectionRefs[lineIndex]}
+            ref={sectionRefs.current[lineIndex]}
             style={{
               fontSize: "100px",
-              fontWeight: "bold",
-              fontFamily: "Times New Roman, serif",
+              fontWeight: "normal", // حذف حالت بولد برای ظاهر مینیمال‌تر
+              fontFamily: "'Times New Roman', serif",
               margin: "0",
               letterSpacing: "6px",
               lineHeight: "1.6",

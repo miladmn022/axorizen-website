@@ -1,14 +1,22 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import useScroll from "../hooks/useScroll";
 
 export default function TextBelowVideo() {
   const scrolled = useScroll();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(scrolled > 300);
+  }, [scrolled]);
 
   return (
     <section
       style={{
         padding: "200px 50px 100px",
-        opacity: scrolled > 300 ? 1 : 0,
-        transform: scrolled > 300 ? "translateY(0)" : "translateY(50px)",
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? "translateY(0)" : "translateY(50px)",
         transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
       }}
     >
@@ -22,7 +30,7 @@ export default function TextBelowVideo() {
         <p
           style={{
             fontSize: "50px",
-            fontWeight: "bold",
+            fontWeight: "normal", // حذف حالت بولد برای سازگاری با استایل کلی
             margin: "0 0 15px 0",
             letterSpacing: "6px",
             lineHeight: "1.2",

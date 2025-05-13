@@ -1,8 +1,10 @@
+"use client";
+
 export default function Footer() {
   return (
     <footer
       style={{
-        backgroundColor: "#111111",
+        backgroundColor: "#111",
         color: "#b3b3b3",
         textAlign: "left",
         fontFamily: "'Helvetica Neue', sans-serif",
@@ -17,7 +19,7 @@ export default function Footer() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1.5fr 0.8fr 0.8fr", // بزرگ‌تر کردن بخش آدرس و کوچک‌تر کردن دو بخش سمت راست
+          gridTemplateColumns: "1fr 1.5fr 0.8fr 0.8fr", // تنظیم نسبت اندازه‌ها
           width: "90%",
           margin: "0 auto",
           gap: "160px",
@@ -25,26 +27,27 @@ export default function Footer() {
       >
         {/* ایمیل و شماره تلفن */}
         <div>
-          <p style={{ marginBottom: "10px", opacity: "0.8" }}>info@axorizen.com</p>
-          <p style={{ opacity: "0.8" }}>+98 912 949 59 07</p>
+          <p style={{ marginBottom: "10px", opacity: "0.85" }}>info@axorizen.com</p>
+          <p style={{ opacity: "0.85" }}>+98 912 949 59 07</p>
         </div>
 
-        {/* آدرس (بزرگ‌تر شده) */}
+        {/* آدرس */}
         <div>
-          <p style={{ opacity: "0.8" }}>
+          <p style={{ opacity: "0.85" }}>
             No.1, Bahar Alley, Bahonar St (after Yaser Square), Tehran, Iran
           </p>
         </div>
 
-        {/* شبکه‌های اجتماعی (کمی کوچک‌تر) */}
+        {/* شبکه‌های اجتماعی */}
         <div>
           <a
-            href="https://www.instagram.com/YOUR_USERNAME"
+            href="https://www.instagram.com/miladmn02"
             target="_blank"
+            rel="noopener noreferrer"
             style={{
               textDecoration: "none",
               color: "#b3b3b3",
-              opacity: "0.7",
+              opacity: "0.8",
               display: "block",
               marginBottom: "10px",
               fontWeight: "300",
@@ -53,12 +56,13 @@ export default function Footer() {
             Instagram
           </a>
           <a
-            href="https://www.linkedin.com/in/YOUR_USERNAME"
+            href="https://www.linkedin.com/in/milad_mahdipour"
             target="_blank"
+            rel="noopener noreferrer"
             style={{
               textDecoration: "none",
               color: "#b3b3b3",
-              opacity: "0.7",
+              opacity: "0.8",
               display: "block",
               fontWeight: "300",
             }}
@@ -67,14 +71,14 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* بخش ارتباط (کمی کوچک‌تر) */}
+        {/* بخش ارتباط */}
         <div>
           <a
             href="/contact"
             style={{
               textDecoration: "none",
               color: "#b3b3b3",
-              opacity: "0.7",
+              opacity: "0.8",
               display: "block",
               fontWeight: "300",
             }}
@@ -84,9 +88,9 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* کپی‌رایت نزدیک‌تر به متن‌ها */}
+      {/* کپی‌رایت */}
       <div style={{ width: "100%", padding: "10px 65px" }}>
-        <p style={{ fontSize: "14px", opacity: "0.6", fontWeight: "300" }}>
+        <p style={{ fontSize: "14px", opacity: "0.7", fontWeight: "300" }}>
           © 2025 Axorizen. All rights reserved.
         </p>
       </div>
