@@ -14,16 +14,16 @@ export default function TextBelowVideo() {
     >
       <div
         style={{
-          maxWidth: "65%",
-          margin: "0 auto 0 25%",
+          maxWidth: "70%",
+          margin: "0 auto 0 30%",
           textAlign: "left",
         }}
       >
         <p
           style={{
-            fontSize: "60px",
+            fontSize: "50px",
             fontWeight: "bold",
-            margin: "0 0 20px 0",
+            margin: "0 0 15px 0",
             letterSpacing: "6px",
             lineHeight: "1.2",
             textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)",

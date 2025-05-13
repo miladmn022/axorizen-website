@@ -7,7 +7,7 @@ export default function TextWithLink() {
   return (
     <section
       style={{
-        padding: "150px 50px",
+        padding: "100px 50px",
         opacity: scrolled > 1200 ? 1 : 0,
         transform: scrolled > 1200 ? "translateY(0)" : "translateY(50px)",
         transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
@@ -22,15 +22,15 @@ export default function TextWithLink() {
       >
         <p
           style={{
-            fontSize: "40px",
+            fontSize: "35px",
             fontWeight: "bold",
             letterSpacing: "6px",
             lineHeight: "1.2",
-            margin: "0 0 60px 0",
+            margin: "0 0 50px 0",
             textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)",
           }}
         >
-          Our designs reflect a perfect blend of creativity and functionality.
+          Our designs reflect a perfect blend of creativity and functionality
         </p>
         <div
           style={{

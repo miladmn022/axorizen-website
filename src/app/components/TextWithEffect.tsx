@@ -26,13 +26,13 @@ export default function TextWithEffect() {
             fontFamily: "Times New Roman, serif",
             margin: "0",
             letterSpacing: "8px",
-            lineHeight: "1",
+            lineHeight: "1.1",
             textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)",
           }}
         >
           We Are Crafting
           <br />
-          <span style={{ paddingLeft: "50px" }}>Professional</span>
+          <span style={{ paddingLeft: "60px" }}>Professional</span>
           <br />
           Web Design Solutions
         </p>

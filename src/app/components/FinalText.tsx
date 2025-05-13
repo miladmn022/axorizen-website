@@ -14,23 +14,23 @@ export default function FinalText() {
     >
       <div
         style={{
-          maxWidth: "90%",
+          maxWidth: "80%",
           margin: "0 0 0 auto",
           textAlign: "right",
         }}
       >
         <p
           style={{
-            fontSize: "80px",
+            fontSize: "70px",
             fontWeight: "bold",
             fontFamily: "Times New Roman, serif",
             margin: "0",
             letterSpacing: "8px",
-            lineHeight: "1.2",
+            lineHeight: "1.1",
             textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)",
           }}
         >
-          We create websites that inspire and transform your digital presence.
+          We create websites that inspire and transform your digital presence
         </p>
       </div>
     </section>

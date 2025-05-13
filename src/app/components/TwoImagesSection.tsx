@@ -1,22 +1,46 @@
+import useScroll from "../hooks/useScroll";
+
 export default function TwoImagesSection() {
+  const scrolled = useScroll();
+
+  // ارتفاع‌ها
+  const leftImageHeight = 400; // ارتفاع عکس چپ
+  const rightImageHeight = 800; // ارتفاع عکس راست
+  const navBarHeight = 50; // ارتفاع تقریبی نویگیشن بار
+
+  // موقعیت دقیق بخش نسبت به بالای صفحه (باید با ابزار توسعه‌دهنده تنظیم بشه)
+  const sectionTop = 1600; // مقدار تقریبی، لطفاً با F12 > Elements دقیق کن
+
+  // موقعیت پایین بخش
+  const sectionBottom = sectionTop + rightImageHeight;
+
+  // محاسبه موقعیت اسکرول نسبت به بخش
+  const scrollRelativeToSection = Math.max(0, scrolled - sectionTop);
+
+  // sticky تا وقتی پایین بخش از دید خارج نشده فعال باشه
+  const isSticky = scrolled < sectionBottom - navBarHeight;
+
+  // محاسبه زوم بر اساس ImageSection
+  const zoom = 1 + scrollRelativeToSection / 2000; // زوم کند و نرم
+
   return (
     <section
       style={{
         position: "relative",
-        height: "600px",
+        minHeight: `${rightImageHeight}px`,
         padding: "0 10px",
-        overflow: "visible", // تغییر به visible برای تست
+        overflow: "visible", // مطمئن می‌شیم overflow مانع sticky نشه
+        display: "flex",
+        gap: "10px",
       }}
     >
       <div
         style={{
           width: "50%",
-          height: "600px",
-          position: "relative",
-          float: "left",
-          marginRight: "5px",
-          overflow: "visible", // تغییر به visible برای تست
-          display: "block",
+          height: `${leftImageHeight}px`,
+          position: isSticky ? "sticky" : "relative",
+          top: isSticky ? `${navBarHeight}px` : "auto",
+          overflow: "hidden",
         }}
       >
         <img
@@ -28,21 +52,24 @@ export default function TwoImagesSection() {
             objectFit: "cover",
             display: "block",
             visibility: "visible",
+            transform: `scale(${zoom})`,
+            transformOrigin: "center center",
+            transition: "transform 0.3s ease-out",
           }}
           onError={(e) => {
-            console.error("Image 2 failed to load:", e);
+            console.error("Image 2 failed to load. Check path: /images/image-2.jpg", e);
+          }}
+          onLoad={() => {
+            console.log("Image 2 loaded successfully");
           }}
         />
       </div>
       <div
         style={{
           width: "50%",
-          height: "600px",
+          height: `${rightImageHeight}px`,
           position: "relative",
-          float: "right",
-          marginLeft: "5px",
-          overflow: "visible", // تغییر به visible برای تست
-          display: "block",
+          overflow: "hidden",
         }}
       >
         <img
@@ -54,9 +81,15 @@ export default function TwoImagesSection() {
             objectFit: "cover",
             display: "block",
             visibility: "visible",
+            transform: `scale(${zoom})`,
+            transformOrigin: "center center",
+            transition: "transform 0.3s ease-out",
           }}
           onError={(e) => {
-            console.error("Image 3 failed to load:", e);
+            console.error("Image 3 failed to load. Check path: /images/image-3.jpg", e);
+          }}
+          onLoad={() => {
+            console.log("Image 3 loaded successfully");
           }}
         />
       </div>
