@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, createRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function StyledTextSection() {
   const textLines = [
@@ -11,14 +11,14 @@ export default function StyledTextSection() {
     ["L", "E", "T", "'", "S", " ", "T", "A", "L", "K", " ", "→"]
   ];
 
-  const sectionRefs = useRef(textLines.map(() => createRef()));
+  const sectionRefs = useRef<(HTMLParagraphElement | null)[]>([]);
   const [visibleLines, setVisibleLines] = useState(Array(textLines.length).fill(false));
 
   useEffect(() => {
     const handleScroll = () => {
       sectionRefs.current.forEach((ref, index) => {
-        if (ref.current) {
-          const rect = ref.current.getBoundingClientRect();
+        if (ref instanceof HTMLElement) {
+          const rect = ref.getBoundingClientRect();
           setVisibleLines((prev) => {
             const updatedLines = [...prev];
             updatedLines[index] = rect.top < window.innerHeight * 0.85 && rect.bottom > window.innerHeight * 0.35;
@@ -30,7 +30,7 @@ export default function StyledTextSection() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [sectionRefs.current]);
+  }, []);
 
   return (
     <div>
@@ -39,7 +39,9 @@ export default function StyledTextSection() {
           {textLines.map((line, lineIndex) => (
             <p
               key={lineIndex}
-              ref={sectionRefs.current[lineIndex]}
+              ref={(el) => {
+                sectionRefs.current[lineIndex] = el;
+              }}
               style={{
                 fontSize: lineIndex === 4 ? "56px" : "80px",
                 fontWeight: "normal",
@@ -62,8 +64,14 @@ export default function StyledTextSection() {
                       opacity: visibleLines[lineIndex] ? 1 : 0,
                       transform: visibleLines[lineIndex] ? "translateX(0)" : "translateX(-10px)",
                     }}
-                    onMouseEnter={(e) => e.target.style.transform = "translateX(5px)"}
-                    onMouseLeave={(e) => e.target.style.transform = "translateX(0)"}
+                    onMouseEnter={(e) => {
+                      const target = e.target as HTMLElement;
+                      target.style.transform = "translateX(5px)";
+                    }}
+                    onMouseLeave={(e) => {
+                      const target = e.target as HTMLElement;
+                      target.style.transform = "translateX(0)";
+                    }}
                   >
                     {char}
                   </a>

@@ -19,19 +19,18 @@ export default function CustomCursor() {
     };
 
     const handleCursorHover = (e: Event) => {
-      if (e instanceof CustomEvent) {
-        setIsHovering(!!e.detail?.isHovering);
-      }
+      const customEvent = e as CustomEvent<{ isHovering: boolean }>;
+      setIsHovering(customEvent.detail?.isHovering ?? false);
     };
 
     window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("cursor-hover", handleCursorHover);
+    window.addEventListener("cursor-hover", handleCursorHover as EventListener); // اصلاح شد ✅
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
-      window.removeEventListener("cursor-hover", handleCursorHover);
+      window.removeEventListener("cursor-hover", handleCursorHover as EventListener);
     };
-  }, []);
+  }, [mouseX, mouseY]);
 
   return (
     <motion.div
