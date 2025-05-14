@@ -1,91 +1,43 @@
+"use client";
+
 import Link from "next/link";
 import useScroll from "../hooks/useScroll";
+import Hoverable from "./Hoverable"; // اگر در پروژه‌ات استفاده می‌کنی
 
 export default function TextWithLink() {
   const scrolled = useScroll();
+  const visible = scrolled > 1200;
 
   return (
     <section
-      style={{
-        padding: "100px 50px",
-        opacity: scrolled > 1200 ? 1 : 0,
-        transform: scrolled > 1200 ? "translateY(0)" : "translateY(50px)",
-        transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
-      }}
+      className={`
+        px-6 sm:px-10 md:px-20 py-24
+        transition-all duration-700 ease-out
+        transform ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
+      `}
     >
-      <div
-        style={{
-          maxWidth: "80%",
-          margin: "0 auto",
-          textAlign: "center",
-        }}
-      >
-        <p
-          style={{
-            fontSize: "35px",
-            fontWeight: "bold",
-            letterSpacing: "6px",
-            lineHeight: "1.2",
-            margin: "0 0 50px 0",
-            textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)",
-          }}
-        >
+      <div className="max-w-[80%] mx-auto text-center">
+        <p className="text-xl sm:text-2xl md:text-4xl font-bold tracking-[0.3em] leading-snug text-white drop-shadow-lg mb-12">
           Our designs reflect a perfect blend of creativity and functionality
         </p>
-        <div
-          style={{
-            textAlign: "right",
-          }}
-        >
-          <Link
-            href="/projects"
-            style={{
-              position: "relative",
-              display: "inline-block",
-              color: "#fff",
-              fontSize: "18px",
-              textDecoration: "none",
-              letterSpacing: "2px",
-              padding: "10px 20px",
-              transition: "color 0.3s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "#000";
-              e.currentTarget.querySelector("span")!.style.borderColor = "#fff";
-              e.currentTarget.querySelector("span")!.style.background = "#fff";
-              window.dispatchEvent(
-                new CustomEvent("cursor-hover", {
-                  detail: { isHovering: true },
-                })
-              );
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "#fff";
-              e.currentTarget.querySelector("span")!.style.borderColor = "#fff";
-              e.currentTarget.querySelector("span")!.style.background = "transparent";
-              window.dispatchEvent(
-                new CustomEvent("cursor-hover", {
-                  detail: { isHovering: false },
-                })
-              );
-            }}
-          >
-            <span
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                width: "150px",
-                height: "150px",
-                border: "2px solid #fff",
-                borderRadius: "50%",
-                zIndex: -1,
-                transition: "background 0.3s ease, border-color 0.3s ease",
-              }}
-            ></span>
-            view projects
-          </Link>
+
+        <div className="text-right">
+          <Hoverable>
+            <Link
+              href="/projects"
+              className="relative inline-block text-white text-base sm:text-lg tracking-wider px-6 py-2 transition-colors duration-300 group"
+            >
+              {/* حلقه سفید دایره‌ای */}
+              <span className="
+                absolute top-1/2 left-1/2 w-36 h-36 -translate-x-1/2 -translate-y-1/2
+                border-2 border-white rounded-full z-[-1]
+                transition-all duration-300 group-hover:bg-white group-hover:border-white
+              " />
+              <span className="group-hover:text-black transition-colors duration-300">
+                view projects
+              </span>
+            </Link>
+          </Hoverable>
         </div>
       </div>
     </section>

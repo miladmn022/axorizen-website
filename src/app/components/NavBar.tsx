@@ -20,12 +20,12 @@ export default function NavBar() {
       {/* سمت چپ */}
       <div className="flex items-center gap-3">
         {/* لوگوی A برای موبایل */}
-        <div className="block md:hidden h-[25px]">
+        <div className="block md:hidden h-[32px] w-[32px]">
           <Image
             src="/images/Logo-A.png"
             alt="A Logo"
-            width={25}
-            height={25}
+            width={32}
+            height={32}
             className="object-contain h-full w-auto"
           />
         </div>
@@ -36,9 +36,9 @@ export default function NavBar() {
             <Image
               src="/images/Logo-Axorizen.png"
               alt="Axorizen Logo"
-              width={100}
-              height={40}
-              className="object-contain h-[40px] w-auto"
+              width={140}
+              height={35}
+              className="object-contain h-[35px] w-auto"
             />
           </Link>
         </Hoverable>
