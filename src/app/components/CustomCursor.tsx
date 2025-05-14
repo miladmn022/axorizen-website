@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
@@ -12,25 +12,26 @@ export default function CustomCursor() {
 
   const [isHovering, setIsHovering] = useState(false);
 
+  const moveCursor = useCallback((e: MouseEvent) => {
+    mouseX.set(e.clientX);
+    mouseY.set(e.clientY);
+  }, [mouseX, mouseY]);
+
+  const handleCursorHover = useCallback((e: Event) => {
+    if (e instanceof CustomEvent) {
+      setIsHovering(e.detail?.isHovering ?? false);
+    }
+  }, []);
+
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-
-    const handleCursorHover = (e: Event) => {
-      const customEvent = e as CustomEvent<{ isHovering: boolean }>;
-      setIsHovering(customEvent.detail?.isHovering ?? false);
-    };
-
     window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("cursor-hover", handleCursorHover as EventListener); // اصلاح شد ✅
+    window.addEventListener("cursor-hover", handleCursorHover);
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
-      window.removeEventListener("cursor-hover", handleCursorHover as EventListener);
+      window.removeEventListener("cursor-hover", handleCursorHover);
     };
-  }, [mouseX, mouseY]);
+  }, [moveCursor, handleCursorHover]);
 
   return (
     <motion.div
