@@ -26,9 +26,7 @@ export default function RootLayout({
         <CursorProvider>
           <CustomCursor />
           {children}
-          <TextSectionWithLink />  {/* اضافه شدن برای جلوگیری از خطای `no-unused-vars` */}
-          <Footer />  {/* اضافه شدن برای جلوگیری از خطای `no-unused-vars` */}
-        </CursorProvider>
+          </CursorProvider>
       </body>
     </html>
   );
