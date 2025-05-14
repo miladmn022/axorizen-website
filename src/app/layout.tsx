@@ -26,6 +26,8 @@ export default function RootLayout({
         <CursorProvider>
           <CustomCursor />
           {children}
+          <TextSectionWithLink />  {/* باید اینجا اضافه شود */}
+          <Footer />  {/* باید اینجا اضافه شود */}
           </CursorProvider>
       </body>
     </html>

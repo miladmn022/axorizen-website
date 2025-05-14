@@ -10,8 +10,7 @@ import TextWithLink from "./components/TextWithLink";
 import TwoImagesSection from "./components/TwoImagesSection";
 import FinalText from "./components/FinalText";
 import MirroredImageSection from "./components/MirroredImageSection";
-import TextSectionWithLink from "./components/TextSectionWithLink";
-import Footer from "./components/Footer";
+
 
 export default function Home() {
   return (
@@ -25,8 +24,6 @@ export default function Home() {
       <TwoImagesSection />
       <FinalText />
       <MirroredImageSection />
-      <TextSectionWithLink />
-      <Footer />
     </Fragment>
   );
 }
