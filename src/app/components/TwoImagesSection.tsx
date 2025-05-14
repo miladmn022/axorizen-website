@@ -1,82 +1,68 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import useScroll from "../hooks/useScroll";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 export default function TwoImagesSection() {
-  const scrolled = useScroll();
-  const [scaleLeft, setScaleLeft] = useState(1);
-  const [scaleRight, setScaleRight] = useState(1);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const [zoom, setZoom] = useState(1.2);
+  const [isSticky, setIsSticky] = useState(false);
 
-  // تنظیم ارتفاع‌ها
   const leftImageHeight = 400;
   const rightImageHeight = 800;
+  const navBarHeight = 50;
+  const zoomRange = 400;
+  const initialZoom = 1.2;
+  const finalZoom = 1;
 
   useEffect(() => {
-    // تنظیم افکت زوم نرم هنگام اسکرول
-    setScaleLeft(1 + Math.min(scrolled / 2000, 0.15));
-    setScaleRight(1 + Math.min(scrolled / 2500, 0.12));
-  }, [scrolled]);
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+
+      const sectionTop = sectionRef.current.getBoundingClientRect().top + window.scrollY;
+      const sectionBottom = sectionTop + rightImageHeight;
+
+      const newZoom = Math.max(
+        finalZoom,
+        initialZoom -
+          (Math.max(0, window.scrollY - (sectionTop - zoomRange)) / zoomRange) *
+            (initialZoom - finalZoom)
+      );
+
+      setZoom(newZoom);
+      setIsSticky(window.scrollY < sectionBottom - navBarHeight);
+    };
+
+    handleScroll(); // اجرا در شروع
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <section
-      style={{
-        position: "relative",
-        minHeight: `${rightImageHeight}px`,
-        padding: "0 10px",
-        overflow: "visible",
-        display: "flex",
-        gap: "10px",
-      }}
+      ref={sectionRef}
+      className="relative flex flex-col md:flex-row gap-3 px-3 min-h-[800px]"
     >
-      {/* تصویر چپ که حالا همزمان با اسکرول حرکت می‌کند */}
+      {/* تصویر چپ (sticky) */}
       <div
-        style={{
-          width: "50%",
-          height: `${leftImageHeight}px`,
-          position: "relative", // حذف `sticky`
-          overflow: "hidden",
-        }}
+        className={`w-full md:w-1/2 overflow-hidden h-[400px] ${
+          isSticky ? "md:sticky md:top-[50px]" : ""
+        }`}
       >
-        <Image
+        <img
           src="/images/image-2.jpg"
           alt="Project Image 1"
-          width={600}
-          height={leftImageHeight}
-          style={{
-            objectFit: "cover",
-            display: "block",
-            transform: `scale(${scaleLeft})`,
-            transformOrigin: "center center",
-            transition: "transform 0.3s ease-out",
-          }}
-          priority
+          className="w-full h-full object-cover transition-transform duration-500 ease-in-out"
+          style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
         />
       </div>
 
-      {/* تصویر راست که همچنان اسکرول می‌شود */}
-      <div
-        style={{
-          width: "50%",
-          height: `${rightImageHeight}px`,
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <Image
+      {/* تصویر راست */}
+      <div className="w-full md:w-1/2 relative overflow-hidden h-[800px]">
+        <img
           src="/images/image-3.jpg"
           alt="Project Image 2"
-          width={600}
-          height={rightImageHeight}
-          style={{
-            objectFit: "cover",
-            display: "block",
-            transform: `scale(${scaleRight})`,
-            transformOrigin: "center center",
-            transition: "transform 0.3s ease-out",
-          }}
-          priority
+          className="w-full h-full object-cover transition-transform duration-500 ease-in-out"
+          style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
         />
       </div>
     </section>

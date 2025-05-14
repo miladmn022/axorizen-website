@@ -1,44 +1,54 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import useScroll from "../hooks/useScroll";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import Hoverable from "../components/Hoverable";
 
 export default function TextBelowVideo() {
-  const scrolled = useScroll();
+  const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsVisible(scrolled > 300);
-  }, [scrolled]);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.6 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
 
   return (
-    <section
-      style={{
-        padding: "200px 50px 100px",
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translateY(0)" : "translateY(50px)",
-        transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
-      }}
-    >
+    <section className="bg-darkBg px-6 md:px-20 py-32">
       <div
-        style={{
-          maxWidth: "70%",
-          margin: "0 auto 0 30%",
-          textAlign: "left",
-        }}
+        ref={ref}
+        className={`
+          transition-all duration-700 ease-out will-change-transform 
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
+          max-w-3xl md:ml-[30%] mx-auto text-left
+        `}
       >
         <p
+          className="text-[24px] md:text-[48px] font-light leading-relaxed text-white mb-10"
           style={{
-            fontSize: "50px",
-            fontWeight: "normal", // حذف حالت بولد برای سازگاری با استایل کلی
-            margin: "0 0 15px 0",
-            letterSpacing: "6px",
-            lineHeight: "1.2",
-            textShadow: "2px 2px 6px rgba(0, 0, 0, 0.8)",
+            fontFamily: `'Helvetica Neue', 'Suisse Int\'l', sans-serif`,
           }}
         >
           We are a dedicated team crafting innovative websites that elevate your brand with cutting-edge design and seamless functionality.
         </p>
+
+        <Hoverable>
+          <Link
+            href="/about"
+            className="inline-block text-white text-sm md:text-base font-light px-6 py-2 border border-gray-400 hover:border-white transition-all duration-300"
+          >
+            Read more
+          </Link>
+        </Hoverable>
       </div>
     </section>
   );

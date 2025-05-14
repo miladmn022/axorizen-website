@@ -10,41 +10,23 @@ export default function MirroredImageSection() {
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
-    setOpacity(scrolled > 600 ? 1 : 0); // نمایش تصویر هنگام اسکرول
-
-    // زوم داخل قاب عکس و بازگشت به حالت اولیه هنگام توقف اسکرول
+    setOpacity(scrolled > 600 ? 1 : 0);
     setScale(1 + Math.min(scrolled / 2000, 0.15));
   }, [scrolled]);
 
   return (
     <section
-      style={{
-        position: "relative",
-        height: "600px", // افزایش اندازه‌ی تصویر ۲۰٪
-        opacity,
-        transition: "opacity 0.6s ease-out",
-        overflow: "hidden",
-      }}
+      className="relative h-[600px] overflow-hidden transition-opacity duration-700 ease-out"
+      style={{ opacity }}
     >
-      <div
-        style={{
-          width: "72%", // افزایش عرض ۲۰٪
-          height: "100%",
-          position: "absolute",
-          left: 0,
-          overflow: "hidden",
-        }}
-      >
+      <div className="absolute left-0 h-full w-[72%] overflow-hidden">
         <Image
           src="/images/image-4.jpg"
           alt="Web Design Project Mirrored"
-          width={720} // افزایش عرض ۲۰٪
-          height={600} // افزایش ارتفاع ۲۰٪
-          style={{
-            objectFit: "cover",
-            transform: `scale(${scale})`, // زوم داخل قاب عکس
-            transition: "transform 0.3s ease-out",
-          }}
+          width={720}
+          height={600}
+          className="object-cover w-full h-full transition-transform duration-300 ease-out"
+          style={{ transform: `scale(${scale})` }}
           priority
         />
       </div>

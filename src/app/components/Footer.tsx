@@ -1,96 +1,64 @@
 "use client";
 
+import Hoverable from "../components/Hoverable";
+
 export default function Footer() {
   return (
-    <footer
-      style={{
-        backgroundColor: "#111",
-        color: "#b3b3b3",
-        textAlign: "left",
-        fontFamily: "'Helvetica Neue', sans-serif",
-        fontSize: "16px",
-        fontWeight: "300",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        padding: "30px 0",
-      }}
-    >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1.5fr 0.8fr 0.8fr", // تنظیم نسبت اندازه‌ها
-          width: "90%",
-          margin: "0 auto",
-          gap: "160px",
-        }}
-      >
-        {/* ایمیل و شماره تلفن */}
+    <footer className="bg-[#111] text-[#b3b3b3] text-left font-light text-base font-['Helvetica Neue'] py-10">
+      <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.5fr_0.8fr_0.8fr] gap-10 md:gap-40">
+        {/* ایمیل و تلفن */}
         <div>
-          <p style={{ marginBottom: "10px", opacity: "0.85" }}>info@axorizen.com</p>
-          <p style={{ opacity: "0.85" }}>+98 912 949 59 07</p>
+          <p className="mb-2 opacity-85">info@axorizen.com</p>
+          <p className="opacity-85">+98 912 949 59 07</p>
         </div>
 
         {/* آدرس */}
         <div>
-          <p style={{ opacity: "0.85" }}>
+          <p className="opacity-85">
             No.1, Bahar Alley, Bahonar St (after Yaser Square), Tehran, Iran
           </p>
         </div>
 
         {/* شبکه‌های اجتماعی */}
         <div>
-          <a
-            href="https://www.instagram.com/miladmn02"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              textDecoration: "none",
-              color: "#b3b3b3",
-              opacity: "0.8",
-              display: "block",
-              marginBottom: "10px",
-              fontWeight: "300",
-            }}
-          >
-            Instagram
-          </a>
-          <a
-            href="https://www.linkedin.com/in/milad_mahdipour"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              textDecoration: "none",
-              color: "#b3b3b3",
-              opacity: "0.8",
-              display: "block",
-              fontWeight: "300",
-            }}
-          >
-            LinkedIn
-          </a>
+          <Hoverable>
+            <a
+              href="https://www.instagram.com/miladmn02"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mb-2 text-[#b3b3b3] opacity-80 hover:opacity-100 transition"
+            >
+              Instagram
+            </a>
+          </Hoverable>
+          <Hoverable>
+            <a
+              href="https://www.linkedin.com/in/milad_mahdipour"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-[#b3b3b3] opacity-80 hover:opacity-100 transition"
+            >
+              LinkedIn
+            </a>
+          </Hoverable>
         </div>
 
-        {/* بخش ارتباط */}
+        {/* ارتباط */}
         <div>
-          <a
-            href="/contact"
-            style={{
-              textDecoration: "none",
-              color: "#b3b3b3",
-              opacity: "0.8",
-              display: "block",
-              fontWeight: "300",
-            }}
-          >
-            Contact
-          </a>
+          <Hoverable>
+            <a
+              href="/contact"
+              className="block text-[#b3b3b3] opacity-80 hover:opacity-100 transition"
+            >
+              Contact
+            </a>
+          </Hoverable>
         </div>
       </div>
 
       {/* کپی‌رایت */}
-      <div style={{ width: "100%", padding: "10px 65px" }}>
-        <p style={{ fontSize: "14px", opacity: "0.7", fontWeight: "300" }}>
+      <div className="w-full px-10 pt-6">
+        <p className="text-sm opacity-70 font-light">
           © 2025 Axorizen. All rights reserved.
         </p>
       </div>

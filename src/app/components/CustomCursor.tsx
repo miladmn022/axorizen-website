@@ -4,6 +4,8 @@ import { useEffect, useState, useCallback } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
+  const [enabled, setEnabled] = useState(false); // بررسی فعال بودن در دسکتاپ
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -24,6 +26,11 @@ export default function CustomCursor() {
   }, []);
 
   useEffect(() => {
+    // فقط در دسکتاپ فعال بشه
+    const isDesktop = window.innerWidth > 768;
+    if (!isDesktop) return;
+
+    setEnabled(true);
     window.addEventListener("mousemove", moveCursor);
     window.addEventListener("cursor-hover", handleCursorHover);
 
@@ -33,10 +40,12 @@ export default function CustomCursor() {
     };
   }, [moveCursor, handleCursorHover]);
 
+  if (!enabled) return null;
+
   return (
     <motion.div
-      className={`pointer-events-none fixed z-[9999] top-0 left-0 rounded-full bg-white mix-blend-difference flex items-center justify-center
-        ${isHovering ? "w-12 h-12" : "w-4 h-4"}`} // کمی افزایش اندازه برای تجربه بصری بهتر
+      className={`pointer-events-none fixed z-[9999] top-0 left-0 rounded-full bg-white mix-blend-difference
+        ${isHovering ? "w-12 h-12" : "w-4 h-4"}`}
       style={{
         x: springX,
         y: springY,

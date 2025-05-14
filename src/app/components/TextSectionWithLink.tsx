@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function StyledTextSection() {
   const textLines = [
@@ -20,80 +20,77 @@ export default function StyledTextSection() {
         if (ref instanceof HTMLElement) {
           const rect = ref.getBoundingClientRect();
           setVisibleLines((prev) => {
-            const updatedLines = [...prev];
-            updatedLines[index] = rect.top < window.innerHeight * 0.85 && rect.bottom > window.innerHeight * 0.35;
-            return updatedLines;
+            const updated = [...prev];
+            updated[index] =
+              rect.top < window.innerHeight * 0.85 && rect.bottom > window.innerHeight * 0.35;
+            return updated;
           });
         }
       });
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div>
-      <section style={{ padding: "150px 120px", backgroundColor: "#000", color: "#fff", textAlign: "left" }}>
-        <div style={{ maxWidth: "90%", margin: "0 auto 0 0" }}>
-          {textLines.map((line, lineIndex) => (
-            <p
-              key={lineIndex}
-              ref={(el) => {
-                sectionRefs.current[lineIndex] = el;
-              }}
-              style={{
-                fontSize: lineIndex === 4 ? "56px" : "80px",
-                fontWeight: "normal",
-                fontFamily: "'NewParisText-Regular', serif",
-                margin: "0",
-                paddingLeft: lineIndex === 1 ? "250px" : lineIndex === 2 ? "390px" : lineIndex === 3 ? "90px" : "0px",
-                textAlign: lineIndex === 4 ? "right" : "left",
-              }}
-            >
-              {line.map((char, charIndex) => (
-                char === "→" ? (
-                  <a
-                    key={charIndex}
-                    href="/contact"
-                    style={{
-                      textDecoration: "none",
-                      color: "#fff",
-                      transition: "transform 0.3s ease",
-                      display: "inline-block",
-                      opacity: visibleLines[lineIndex] ? 1 : 0,
-                      transform: visibleLines[lineIndex] ? "translateX(0)" : "translateX(-10px)",
-                    }}
-                    onMouseEnter={(e) => {
-                      const target = e.target as HTMLElement;
-                      target.style.transform = "translateX(5px)";
-                    }}
-                    onMouseLeave={(e) => {
-                      const target = e.target as HTMLElement;
-                      target.style.transform = "translateX(0)";
-                    }}
-                  >
-                    {char}
-                  </a>
-                ) : (
-                  <span
-                    key={charIndex}
-                    style={{
-                      opacity: visibleLines[lineIndex] ? 1 : 0,
-                      transform: visibleLines[lineIndex] ? "translateY(0)" : "translateY(30px)",
-                      transition: `opacity 0.5s ease-out ${charIndex * 0.05}s, transform 0.5s ease-out ${charIndex * 0.05}s`,
-                      display: "inline-block",
-                      marginRight: char === " " ? "20px" : "0px",
-                    }}
-                  >
-                    {char}
-                  </span>
-                )
-              ))}
-            </p>
-          ))}
-        </div>
-      </section>
-    </div>
+    <section className="bg-darkBg text-white px-6 md:px-28 py-32">
+      <div className="max-w-[90%] mx-0 flex flex-col gap-6">
+        {textLines.map((line, index) => (
+          <p
+            key={index}
+            ref={(el) => (sectionRefs.current[index] = el)}
+            className={`
+              font-normal font-serif leading-tight m-0
+              ${index === 4 ? "text-right" : "text-left"}
+              ${index === 1 ? "pl-8 md:pl-32" : ""}
+              ${index === 2 ? "pl-12 md:pl-48" : ""}
+              ${index === 3 ? "pl-4 md:pl-20" : ""}
+              ${index === 4 ? "text-[32px] md:text-[56px]" : "text-[36px] md:text-[80px]"}
+            `}
+          >
+            {line.map((char, charIndex) =>
+              char === "→" ? (
+                <a
+                  key={charIndex}
+                  href="/contact"
+                  className="inline-block text-white no-underline transition-transform duration-300"
+                  style={{
+                    opacity: visibleLines[index] ? 1 : 0,
+                    transform: visibleLines[index]
+                      ? "translateX(0)"
+                      : "translateX(-10px)",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.target as HTMLElement).style.transform = "translateX(5px)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.target as HTMLElement).style.transform = "translateX(0)";
+                  }}
+                >
+                  {char}
+                </a>
+              ) : (
+                <span
+                  key={charIndex}
+                  className="inline-block"
+                  style={{
+                    marginRight: char === " " ? "20px" : "0px",
+                    opacity: visibleLines[index] ? 1 : 0,
+                    transform: visibleLines[index]
+                      ? "translateY(0)"
+                      : "translateY(30px)",
+                    transition: `opacity 0.5s ease-out ${charIndex * 0.05}s, transform 0.5s ease-out ${charIndex * 0.05}s`,
+                  }}
+                >
+                  {char}
+                </span>
+              )
+            )}
+          </p>
+        ))}
+      </div>
+    </section>
   );
 }
