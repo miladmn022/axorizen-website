@@ -4,6 +4,7 @@ import CustomCursor from "./components/CustomCursor";
 import { CursorProvider } from "./context/CursorProvider";
 import TextSectionWithLink from "./components/TextSectionWithLink";
 import Footer from "./components/Footer";
+import NavBar from "./components/NavBar"; // ✅ این خط رو اضافه کن
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,10 +26,10 @@ export default function RootLayout({
       <body className={`${inter.className} bg-black text-white overflow-x-hidden m-0 p-0`}>
         <CursorProvider>
           <CustomCursor />
+          <NavBar /> {/* ✅ Navbar اینجا اضافه شد */}
           {children}
-          <TextSectionWithLink />  {/* باید اینجا اضافه شود */}
-          <Footer />  {/* باید اینجا اضافه شود */}
-          </CursorProvider>
+          <Footer />
+        </CursorProvider>
       </body>
     </html>
   );

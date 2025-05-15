@@ -1,7 +1,6 @@
 "use client";
 
 import { Fragment, useEffect, useState } from "react";
-import NavBar from "./components/NavBar";
 import VideoSection from "./components/VideoSection";
 import TextBelowVideo from "./components/TextBelowVideo";
 import ImageSection from "./components/ImageSection";
@@ -26,7 +25,7 @@ export default function Home() {
 
   return (
     <Fragment>
-      <NavBar />
+      
       <VideoSection />
       <TextBelowVideo />
       <ImageSection />
