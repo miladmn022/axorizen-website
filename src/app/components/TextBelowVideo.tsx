@@ -9,6 +9,7 @@ export default function TextBelowVideo() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const localRef = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -16,9 +17,9 @@ export default function TextBelowVideo() {
       { threshold: 0.6 }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    if (localRef) observer.observe(localRef);
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      if (localRef) observer.unobserve(localRef);
     };
   }, []);
 

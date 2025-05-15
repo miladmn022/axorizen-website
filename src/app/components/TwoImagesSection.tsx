@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export default function TwoImagesSection() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -31,7 +32,7 @@ export default function TwoImagesSection() {
       setIsSticky(window.scrollY < sectionBottom - navBarHeight);
     };
 
-    handleScroll(); // اجرا در شروع
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -43,25 +44,31 @@ export default function TwoImagesSection() {
     >
       {/* تصویر چپ (sticky) */}
       <div
-        className={`w-full md:w-1/2 overflow-hidden h-[400px] ${
+        className={`relative w-full md:w-1/2 overflow-hidden h-[400px] ${
           isSticky ? "md:sticky md:top-[50px]" : ""
         }`}
+        style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
       >
-        <img
+        <Image
           src="/images/image-2.jpg"
           alt="Project Image 1"
-          className="w-full h-full object-cover transition-transform duration-500 ease-in-out"
-          style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
+          fill
+          className="object-cover"
+          priority
         />
       </div>
 
       {/* تصویر راست */}
-      <div className="w-full md:w-1/2 relative overflow-hidden h-[800px]">
-        <img
+      <div
+        className="relative w-full md:w-1/2 overflow-hidden h-[800px]"
+        style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
+      >
+        <Image
           src="/images/image-3.jpg"
           alt="Project Image 2"
-          className="w-full h-full object-cover transition-transform duration-500 ease-in-out"
-          style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
+          fill
+          className="object-cover"
+          priority
         />
       </div>
     </section>

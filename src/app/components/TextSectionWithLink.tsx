@@ -40,7 +40,9 @@ export default function StyledTextSection() {
         {textLines.map((line, index) => (
           <p
             key={index}
-            ref={(el) => (sectionRefs.current[index] = el)}
+            ref={(el) => {
+              sectionRefs.current[index] = el;
+            }}
             className={`
               font-normal font-serif leading-tight m-0
               ${index === 4 ? "text-right" : "text-left"}
