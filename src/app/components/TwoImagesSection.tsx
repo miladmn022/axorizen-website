@@ -7,7 +7,6 @@ export default function TwoImagesSection() {
   const [zoom, setZoom] = useState(1.2);
   const [isSticky, setIsSticky] = useState(false);
 
-  const leftImageHeight = 400;
   const rightImageHeight = 800;
   const navBarHeight = 50;
   const zoomRange = 400;

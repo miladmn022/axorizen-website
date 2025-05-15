@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function FullImageZoomSection() {
   const ref = useRef(null);
@@ -14,12 +15,18 @@ export default function FullImageZoomSection() {
 
   return (
     <div ref={ref} className="relative h-screen overflow-hidden">
-      <motion.img
-        src="images/image-5.jpg" // عکس مورد نظر رو در پوشه public بذار
-        alt="Zooming Background"
+      <motion.div
         style={{ scale }}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+        className="absolute inset-0 w-full h-full"
+      >
+        <Image
+          src="/images/image-5.jpg"
+          alt="Zooming Background"
+          fill
+          priority
+          className="object-cover"
+        />
+      </motion.div>
     </div>
   );
 }
