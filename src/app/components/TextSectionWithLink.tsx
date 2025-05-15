@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function StyledTextSection() {
+export default function TextSectionWithLink() {
   const textLines = [
     ["W", "E", " ", "A", "R", "E", " ", "B", "U", "I", "L", "D", "I", "N", "G"],
     ["A", " ", "N", "E", "W", " ", "M", "I", "N", "D", "S", "E", "T"],

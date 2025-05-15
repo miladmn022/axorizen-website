@@ -51,7 +51,7 @@ export default function ProjectsPage() {
           >
             {!isMobile ? (
               <>
-                {/* 💻 iMac Frame */}
+                {/*  iMac Frame */}
                 <div className="relative w-[460px] h-[280px] bg-[#d1d3d4] rounded-t-[24px] border-[8px] border-[#1a1a1a] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
                   <div className="absolute inset-0 scale-[0.32] origin-top-left bg-black">
                     <iframe
@@ -69,14 +69,14 @@ export default function ProjectsPage() {
                   <div className="text-black text-3xl opacity-60"></div>
                 </div>
 
-                {/* 🦵 iMac Base */}
+                {/*  iMac Base */}
                 <div className="relative w-[120px] h-[50px] mt-1">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[20px] bg-gradient-to-b from-[#ddd] to-[#aaa] rounded-[30px] shadow-inner shadow-black/10" />
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120px] h-[12px] bg-gradient-to-t from-[#999] to-[#bbb] rounded-b-[50%] shadow-[0_6px_14px_rgba(0,0,0,0.4)]" />
                 </div>
               </>
             ) : (
-              // 📱 Mobile Phone Frame
+              //  Mobile Phone Frame
               <div className="relative w-[300px] sm:w-[320px] h-[600px] rounded-[40px] bg-black border-[10px] border-[#444] shadow-xl overflow-hidden">
                 <iframe
                   src={project.url}
