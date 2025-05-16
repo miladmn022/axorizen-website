@@ -1,6 +1,5 @@
 "use client";
 import MirroredImageSection from "../components/MirroredImageSection";
-
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
@@ -32,7 +31,6 @@ export default function AboutHero() {
   const [visibleHero, setVisibleHero] = useState(Array(heroLines.length).fill(false));
   const [showImage, setShowImage] = useState(false);
   const [visibleStatement, setVisibleStatement] = useState(Array(statementLines.length).fill(false));
-  const [whiteVisible, setWhiteVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,7 +57,6 @@ export default function AboutHero() {
       if (whiteSectionRef.current) {
         const rect = whiteSectionRef.current.getBoundingClientRect();
         const visible = rect.top < window.innerHeight * 0.85;
-        setWhiteVisible(visible);
 
         if (visible) {
           setTimeout(() => document.body.classList.add("light"), 100);
@@ -210,8 +207,8 @@ export default function AboutHero() {
           </div>
         </div>
       </section>
+
+      <MirroredImageSection />
     </>
   );
 }
-
-<MirroredImageSection />
