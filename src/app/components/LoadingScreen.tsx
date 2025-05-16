@@ -24,7 +24,7 @@ export default function LoadingScreen() {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.8 }}
-        className="fixed inset-0 z-[9999] bg-black flex items-center justify-center"
+        className="fixed inset-0 z-[9999] bg-[var(--background)] flex items-center justify-center"
       >
         <motion.div
           initial={{ scale: 0.6, rotate: 0 }}

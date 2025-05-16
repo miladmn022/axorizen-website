@@ -34,7 +34,7 @@ export default function TextWithEffect() {
   }, []);
 
   return (
-    <section className="bg-darkBg text-white px-6 md:px-28 py-32">
+    <section className="bg-[var(--background)] text-[var(--foreground)] px-6 md:px-28 py-32">
       <div className="max-w-[90%] mx-0 flex flex-col gap-6">
         {textLines.map((line, lineIndex) => (
           <p

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -35,7 +36,7 @@ export default function ProjectsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-darkBg text-white py-24 px-6 md:px-20">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] py-24 px-6 md:px-20">
       <h1 className="text-center text-4xl md:text-6xl font-light tracking-widest mb-20 uppercase">
         Projects
       </h1>
@@ -53,7 +54,7 @@ export default function ProjectsPage() {
               <>
                 {/*  iMac Frame */}
                 <div className="relative w-[460px] h-[280px] bg-[#d1d3d4] rounded-t-[24px] border-[8px] border-[#1a1a1a] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
-                  <div className="absolute inset-0 scale-[0.32] origin-top-left bg-black">
+                  <div className="absolute inset-0 scale-[0.32] origin-top-left bg-[var(--background)]">
                     <iframe
                       src={project.url}
                       className="w-[1440px] h-[900px] border-none pointer-events-auto"
@@ -66,7 +67,7 @@ export default function ProjectsPage() {
 
                 {/* iMac Bottom Bar with Apple logo */}
                 <div className="relative w-[460px] h-[60px] bg-gradient-to-b from-[#d8d8d8] to-[#b2b2b2] border-x-[8px] border-b-[8px] border-[#aaa] rounded-b-[20px] flex items-center justify-center">
-                  <div className="text-black text-3xl opacity-60"></div>
+                  <div className="text-[var(--foreground)] text-3xl opacity-60"></div>
                 </div>
 
                 {/*  iMac Base */}
@@ -77,7 +78,7 @@ export default function ProjectsPage() {
               </>
             ) : (
               //  Mobile Phone Frame
-              <div className="relative w-[300px] sm:w-[320px] h-[600px] rounded-[40px] bg-black border-[10px] border-[#444] shadow-xl overflow-hidden">
+              <div className="relative w-[300px] sm:w-[320px] h-[600px] rounded-[40px] bg-[var(--background)] border-[10px] border-[#444] shadow-xl overflow-hidden">
                 <iframe
                   src={project.url}
                   className="w-full h-full pointer-events-auto"

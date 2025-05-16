@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
-  const [enabled, setEnabled] = useState(false); // بررسی فعال بودن در دسکتاپ
+  const [enabled, setEnabled] = useState(false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -26,7 +26,6 @@ export default function CustomCursor() {
   }, []);
 
   useEffect(() => {
-    // فقط در دسکتاپ فعال بشه
     const isDesktop = window.innerWidth > 768;
     if (!isDesktop) return;
 
@@ -44,8 +43,11 @@ export default function CustomCursor() {
 
   return (
     <motion.div
-      className={`pointer-events-none fixed z-[9999] top-0 left-0 rounded-full bg-white mix-blend-difference
-        ${isHovering ? "w-12 h-12" : "w-4 h-4"}`}
+      className={`
+        pointer-events-none fixed z-[9999] top-0 left-0 rounded-full
+        ${isHovering ? "w-12 h-12" : "w-4 h-4"}
+        bg-white mix-blend-difference
+      `}
       style={{
         x: springX,
         y: springY,

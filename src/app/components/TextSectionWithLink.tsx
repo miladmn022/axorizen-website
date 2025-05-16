@@ -35,7 +35,7 @@ export default function TextSectionWithLink() {
   }, []);
 
   return (
-    <section className="bg-darkBg text-white px-6 md:px-28 py-32">
+    <section className="bg-[var(--background)] text-[var(--foreground)] px-6 md:px-28 py-32">
       <div className="max-w-[90%] mx-0 flex flex-col gap-6">
         {textLines.map((line, index) => (
           <p
@@ -57,7 +57,7 @@ export default function TextSectionWithLink() {
                 <a
                   key={charIndex}
                   href="/contact"
-                  className="inline-block text-white no-underline transition-transform duration-300"
+                  className="inline-block text-[var(--foreground)] no-underline transition-transform duration-300"
                   style={{
                     opacity: visibleLines[index] ? 1 : 0,
                     transform: visibleLines[index]

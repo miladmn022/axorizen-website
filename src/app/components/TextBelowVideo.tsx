@@ -24,7 +24,7 @@ export default function TextBelowVideo() {
   }, []);
 
   return (
-    <section className="bg-darkBg px-6 md:px-20 py-32">
+    <section className="bg-[var(--background)] px-6 md:px-20 py-32">
       <div
         ref={ref}
         className={`
@@ -34,7 +34,7 @@ export default function TextBelowVideo() {
         `}
       >
         <p
-          className="text-[24px] md:text-[48px] font-light leading-relaxed text-white mb-10"
+          className="text-[24px] md:text-[48px] font-light leading-relaxed text-[var(--foreground)] mb-10"
           style={{
             fontFamily: `'Helvetica Neue', 'Suisse Int\'l', sans-serif`,
           }}
@@ -45,7 +45,7 @@ export default function TextBelowVideo() {
         <Hoverable>
           <Link
             href="/about"
-            className="inline-block text-white text-sm md:text-base font-light px-6 py-2 border border-gray-400 hover:border-white transition-all duration-300"
+            className="inline-block text-[var(--foreground)] text-sm md:text-base font-light px-6 py-2 border border-gray-400 hover:border-white transition-all duration-300"
           >
             Read more
           </Link>

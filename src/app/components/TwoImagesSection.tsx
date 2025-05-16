@@ -42,34 +42,40 @@ export default function TwoImagesSection() {
       ref={sectionRef}
       className="relative flex flex-col md:flex-row gap-3 px-3 min-h-[800px]"
     >
-      {/* تصویر چپ (sticky) */}
+      {/* تصویر چپ (sticky + داخل قاب با زوم داخلی) */}
       <div
-        className={`relative w-full md:w-1/2 overflow-hidden h-[400px] ${
+        className={`relative w-full md:w-1/2 h-[400px] overflow-hidden ${
           isSticky ? "md:sticky md:top-[50px]" : ""
         }`}
-        style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
       >
-        <Image
-          src="/images/image-2.jpg"
-          alt="Project Image 1"
-          fill
-          className="object-cover"
-          priority
-        />
+        <div
+          className="w-full h-full"
+          style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
+        >
+          <Image
+            src="/images/image-2.jpg"
+            alt="Project Image 1"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
       </div>
 
-      {/* تصویر راست */}
-      <div
-        className="relative w-full md:w-1/2 overflow-hidden h-[800px]"
-        style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
-      >
-        <Image
-          src="/images/image-3.jpg"
-          alt="Project Image 2"
-          fill
-          className="object-cover"
-          priority
-        />
+      {/* تصویر راست (داخل قاب با زوم داخلی) */}
+      <div className="relative w-full md:w-1/2 h-[800px] overflow-hidden">
+        <div
+          className="w-full h-full"
+          style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
+        >
+          <Image
+            src="/images/image-3.jpg"
+            alt="Project Image 2"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
       </div>
     </section>
   );

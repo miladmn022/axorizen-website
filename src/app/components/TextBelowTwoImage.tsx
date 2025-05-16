@@ -25,7 +25,7 @@ export default function TextBelowTwoImage() {
             text-4xl sm:text-5xl md:text-6xl lg:text-7xl
             font-normal font-serif
             tracking-[0.3em] leading-tight
-            text-white drop-shadow-lg
+            text-[var(--foreground)] drop-shadow-lg
           "
         >
           We create websites that inspire and transform your digital presence

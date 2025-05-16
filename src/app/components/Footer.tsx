@@ -4,7 +4,7 @@ import Hoverable from "../components/Hoverable";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111] text-[#b3b3b3] text-left font-light text-base font-['Helvetica Neue'] py-10">
+    <footer className="bg-[var(--background)] text-[var(--foreground)] text-left font-light text-base font-['Helvetica Neue'] py-10">
       <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.5fr_0.8fr_0.8fr] gap-10 md:gap-40">
         {/* ایمیل و تلفن */}
         <div>
@@ -15,7 +15,7 @@ export default function Footer() {
         {/* آدرس */}
         <div>
           <p className="opacity-85">
-            No.1, Bahar Alley, Bahonar St (after Yaser Square), Tehran, Iran
+            Unit 9, No.4, Golshahr blvd, Nelson Mandela blvd, Tehran, Iran
           </p>
         </div>
 
@@ -26,7 +26,7 @@ export default function Footer() {
               href="https://www.instagram.com/miladmn02"
               target="_blank"
               rel="noopener noreferrer"
-              className="block mb-2 text-[#b3b3b3] opacity-80 hover:opacity-100 transition"
+              className="block mb-2 text-[var(--foreground)] opacity-80 hover:opacity-100 transition"
             >
               Instagram
             </a>
@@ -36,7 +36,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/milad_mahdipour"
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-[#b3b3b3] opacity-80 hover:opacity-100 transition"
+              className="block text-[var(--foreground)] opacity-80 hover:opacity-100 transition"
             >
               LinkedIn
             </a>
@@ -48,7 +48,7 @@ export default function Footer() {
           <Hoverable>
             <a
               href="/contact"
-              className="block text-[#b3b3b3] opacity-80 hover:opacity-100 transition"
+              className="block text-[var(--foreground)] opacity-80 hover:opacity-100 transition"
             >
               Contact
             </a>

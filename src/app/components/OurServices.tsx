@@ -23,8 +23,8 @@ const services = [
 
 export default function OurServices() {
   return (
-    <section className="py-24 px-6 md:px-20 bg-darkBg text-white">
-      <h2 className="text-2xl md:text-4xl font-light text-gray-300 mb-20 text-center uppercase tracking-[0.3em]">
+    <section className="py-24 px-6 md:px-20 bg-[var(--background)] text-[var(--foreground)]">
+      <h2 className="text-2xl md:text-4xl font-light text-[var(--foreground)] mb-20 text-center uppercase tracking-[0.3em]">
         Our Services
       </h2>
 
@@ -46,7 +46,7 @@ export default function OurServices() {
             >
               <motion.div
                 className={`w-full sm:w-[80%] md:w-[35%] lg:w-[30%] px-6 py-6
-                  rounded-xl bg-white/5 hover:scale-105 transition-transform duration-300 cursor-pointer ${alignmentClass}
+                  rounded-xl bg-[var(--background)]/5 hover:scale-105 transition-transform duration-300 cursor-pointer ${alignmentClass}
                 `}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 250 }}
@@ -68,7 +68,7 @@ export default function OurServices() {
                 <h3 className="text-base md:text-xl font-medium mb-2 tracking-widest">
                   {service.title}
                 </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
+                <p className="text-sm text-[var(--foreground)] leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>
