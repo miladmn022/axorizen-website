@@ -1,3 +1,4 @@
+
 "use client";
 import MirroredImageSection from "../components/MirroredImageSection";
 import { useEffect, useState, useRef } from "react";
@@ -88,13 +89,14 @@ export default function AboutHero() {
 
   return (
     <>
-      {/* THINK / BOLDER / IMPACT */}
       <section className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex items-center justify-center px-6 md:px-20">
         <div className="flex flex-col gap-6 text-center">
           {heroLines.map((line, i) => (
             <p
               key={i}
-              ref={(el) => (sectionRefs.current[i] = el)}
+              ref={(el) => {
+                sectionRefs.current[i] = el;
+              }}
               className={`text-[40px] md:text-[80px] font-bold tracking-tight leading-tight m-0 ${
                 i === 1 ? "pl-12 md:pl-24" : i === 2 ? "pl-4 md:pl-10" : ""
               }`}
@@ -118,7 +120,6 @@ export default function AboutHero() {
         </div>
       </section>
 
-      {/* IMAGE WITH ZOOM ON SCROLL */}
       <section
         ref={imageRef}
         className="w-full h-screen relative flex items-center justify-center bg-[var(--background)]"
@@ -141,7 +142,6 @@ export default function AboutHero() {
         </div>
       </section>
 
-      {/* FOUR-LINE STATEMENT */}
       <section className="bg-[var(--background)] text-[var(--foreground)] px-6 md:px-20 py-12">
         <div className="flex flex-col gap-4 text-left">
           {statementLines.map((line, i) => (
@@ -160,7 +160,6 @@ export default function AboutHero() {
         </div>
       </section>
 
-      {/* WHITE SECTION WITH TEXT */}
       <section
         ref={whiteSectionRef}
         className="relative z-0 px-6 md:px-20 py-24 bg-[var(--background)] text-[var(--foreground)]"
@@ -182,32 +181,6 @@ export default function AboutHero() {
           </div>
         </div>
       </section>
-
-      {/* IMAGE RIGHT – STICKY WITHIN SECTION */}
-      <section className="w-full bg-[var(--background)] px-6 md:px-20 py-24">
-        <div className="flex flex-col md:flex-row gap-12 items-start">
-          {/* LEFT SIDE */}
-          <div className="w-full md:w-[30%]">
-            {/* Optional text here */}
-          </div>
-
-          {/* RIGHT SIDE - IMAGE STICKY */}
-          <div className="w-full md:w-[70%]">
-            <div className="sticky top-24">
-              <div className="overflow-hidden rounded-2xl shadow-lg transition-transform duration-1000 transform hover:scale-105">
-                <Image
-                  src="/images/image-8.jpg"
-                  alt="Side Visual"
-                  width={1600}
-                  height={1000}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <MirroredImageSection />
     </>
   );
