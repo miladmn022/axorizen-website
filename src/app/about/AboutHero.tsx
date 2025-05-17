@@ -106,9 +106,8 @@ export default function AboutHero() {
               <p
                 key={i}
                 ref={(el) => {
-                heroRefs.current[i] = el;
+                  heroRefs.current[i] = el;
                 }}
-
                 className={`text-[40px] md:text-[80px] font-bold tracking-tight leading-tight m-0 text-center ${alignment}`}
               >
                 {line.map((char, j) => (
@@ -160,7 +159,9 @@ export default function AboutHero() {
           {statementLines.map((line, i) => (
             <p
               key={i}
-              ref={(el) => (statementRefs.current[i] = el)}
+              ref={(el) => {
+                statementRefs.current[i] = el;
+              }}
               className="text-[24px] md:text-[36px] font-light tracking-wide leading-snug"
               style={{
                 opacity: visibleStatement[i] ? 1 : 0,
@@ -194,7 +195,9 @@ export default function AboutHero() {
           {philosophyLines.map((line, i) => (
             <p
               key={i}
-              ref={(el) => (philosophyRefs.current[i] = el)}
+              ref={(el) => {
+                philosophyRefs.current[i] = el;
+              }}
               className="text-[20px] md:text-[28px] font-light tracking-wide"
               style={{
                 opacity: visiblePhilosophy[i] ? 1 : 0,
