@@ -4,7 +4,7 @@ import CustomCursor from "./components/CustomCursor";
 import { CursorProvider } from "./context/CursorProvider";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
-import TextSectionWithLink from "./components/TextSectionWithLink";
+import RootWrapper from "./components/RootWrapper"; // جدید
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,11 +25,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} dark`}>
         <CursorProvider>
-          <CustomCursor />
-          <NavBar />
-          {children}
-          <TextSectionWithLink />
-          <Footer />
+          <RootWrapper>{children}</RootWrapper>
         </CursorProvider>
       </body>
     </html>

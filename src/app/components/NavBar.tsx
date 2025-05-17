@@ -2,13 +2,28 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useScroll from "../hooks/useScroll";
 import Hoverable from "../components/Hoverable";
 
 export default function NavBar() {
   const scrolled = useScroll();
   const [isOpen, setIsOpen] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState("dark");
+
+  useEffect(() => {
+    const updateTheme = () => {
+      if (document.body.classList.contains("light")) {
+        setCurrentTheme("light");
+      } else {
+        setCurrentTheme("dark");
+      }
+    };
+
+    updateTheme(); // هنگام بارگذاری
+    window.addEventListener("scroll", updateTheme);
+    return () => window.removeEventListener("scroll", updateTheme);
+  }, []);
 
   return (
     <nav
@@ -17,12 +32,16 @@ export default function NavBar() {
         ${scrolled > 50 ? "bg-[var(--background)]/90 backdrop-blur-sm" : "bg-transparent"}
       `}
     >
-      {/* سمت چپ */}
+      {/* لوگو */}
       <div className="flex items-center gap-3">
-        {/* لوگوی A برای موبایل */}
+        {/* موبایل - A */}
         <div className="block md:hidden h-[32px] w-[32px]">
           <Image
-            src="/images/Logo-A.png"
+            src={
+              currentTheme === "dark"
+                ? "/images/Logo-A(white).svg"
+                : "/images/Logo-A(black).svg"
+            }
             alt="A Logo"
             width={32}
             height={32}
@@ -30,11 +49,15 @@ export default function NavBar() {
           />
         </div>
 
-        {/* لوگوی Axorizen برای دسکتاپ */}
+        {/* دسکتاپ - Axorizen */}
         <Hoverable>
           <Link href="/" className="hidden md:block">
             <Image
-              src="/images/Logo-Axorizen.png"
+              src={
+                currentTheme === "dark"
+                ? "/images/Logo-Axorizen(white).svg"
+                : "/images/Logo-Axorizen(black).svg"
+              }
               alt="Axorizen Logo"
               width={140}
               height={35}
@@ -46,15 +69,15 @@ export default function NavBar() {
 
       {/* آیکون منو در موبایل */}
       <div
-        className="md:hidden flex flex-col gap-[5px] cursor-pointer z-50"
+        className="md:hidden flex flex-col gap-[5px] cursor-pointer z-[1100]"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="w-6 h-[2px] bg-[var(--background)]" />
-        <span className="w-6 h-[2px] bg-[var(--background)]" />
-        <span className="w-6 h-[2px] bg-[var(--background)]" />
+        <span className="w-6 h-[2px] bg-[var(--foreground)]" />
+        <span className="w-6 h-[2px] bg-[var(--foreground)]" />
+        <span className="w-6 h-[2px] bg-[var(--foreground)]" />
       </div>
 
-      {/* منو برای دسکتاپ */}
+      {/* منوی دسکتاپ */}
       <div className="hidden md:flex items-center gap-6">
         {[
           { href: "/", label: "Home" },
@@ -73,19 +96,19 @@ export default function NavBar() {
         ))}
       </div>
 
-      {/* منوی بازشونده موبایل */}
+      {/* منوی موبایل */}
       {isOpen && (
-        <div className="absolute top-full right-0 w-full bg-[var(--background)]/90 flex flex-col items-end px-6 py-4 md:hidden">
+        <div className="absolute top-full right-0 w-full bg-[var(--background)]/95 flex flex-col items-end px-6 py-4 md:hidden z-[1050]">
           {[
             { href: "/", label: "Home" },
-          { href: "/projects", label: "Projects" },
+            { href: "/projects", label: "Projects" },
             { href: "/about", label: "About" },
             { href: "/contact", label: "Contact" },
           ].map(({ href, label }) => (
             <Hoverable key={label}>
               <Link
                 href={href}
-                className="text-[var(--foreground)] text-base font-light py-2 border-b border-white/30 w-full text-right"
+                className="text-[var(--foreground)] text-base font-light py-2 border-b border-white/20 w-full text-right"
                 onClick={() => setIsOpen(false)}
               >
                 {label}

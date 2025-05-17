@@ -12,11 +12,13 @@ export default function ImageSection() {
     setOpacity(scrolled > 600 ? 1 : 0);
   }, [scrolled]);
 
+  const dynamicHeight = typeof window !== "undefined" && window.innerWidth < 640 ? "300px" : "500px";
+
   return (
     <section
       style={{
         position: "relative",
-        height: "500px",
+        height: dynamicHeight,
         opacity,
         transition: "opacity 0.6s ease-out",
         overflow: "hidden",

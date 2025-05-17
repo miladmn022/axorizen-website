@@ -5,19 +5,19 @@ import { motion } from "framer-motion";
 const services = [
   {
     title: "UI/UX Design",
-    description: "Intuitive and elegant interface experiences.",
+    description: "Crafting smooth, intuitive journeys that feel good and look great",
   },
   {
     title: "SEO Optimization",
-    description: "Maximizing your visibility across search platforms.",
+    description: "Strategic SEO that brings your audience, right to your digital doorstep",
   },
   {
     title: "Responsive Design",
-    description: "Pixel-perfect layouts across all devices.",
+    description: "Flawless designs that adapt beautifully, everywhere",
   },
   {
     title: "Performance Tuning",
-    description: "Speed and efficiency for top-tier UX.",
+    description: "Optimized for speed, crafted for seamless user flow",
   },
 ];
 
@@ -28,25 +28,29 @@ export default function OurServices() {
         Our Services
       </h2>
 
-      <div className="flex flex-col gap-16">
+      <div className="flex flex-col gap-10 sm:gap-16">
         {services.map((service, index) => {
           const isRight = index === 0 || index === 2;
-          const alignmentClass = isRight
-            ? "ml-[20%] text-right"
-            : "mr-[20%] text-left";
+          const containerAlignment = isRight
+            ? "sm:ml-[20%] items-start"
+            : "sm:mr-[20%] items-end";
+
+          const textAlignment = isRight
+            ? "text-left"
+            : "text-right";
 
           return (
             <motion.div
               key={index}
-              className="flex justify-center"
+              className={`flex justify-center ${containerAlignment}`}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
             >
               <motion.div
-                className={`w-full sm:w-[80%] md:w-[35%] lg:w-[30%] px-6 py-6
-                  rounded-xl bg-[var(--background)]/5 hover:scale-105 transition-transform duration-300 cursor-pointer ${alignmentClass}
+                className={`w-[95%] sm:w-[80%] md:w-[35%] lg:w-[30%] px-6 py-6
+                  rounded-xl bg-[var(--background)]/5 hover:scale-105 transition-transform duration-300 cursor-pointer ${textAlignment}
                 `}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 250 }}

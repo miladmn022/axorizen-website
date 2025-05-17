@@ -19,7 +19,13 @@ export default function TextBelowTwoImage() {
         transform ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
       `}
     >
-      <div className="max-w-[80%] ml-auto text-right">
+      <div
+        className="
+          w-[80%] ml-auto
+          md:w-[70%] md:ml-auto
+          text-left
+        "
+      >
         <p
           className="
             text-4xl sm:text-5xl md:text-6xl lg:text-7xl
@@ -28,7 +34,7 @@ export default function TextBelowTwoImage() {
             text-[var(--foreground)] drop-shadow-lg
           "
         >
-          We create websites that inspire and transform your digital presence
+          We don’t just design websites we craft digital experiences that leave a mark
         </p>
       </div>
     </section>

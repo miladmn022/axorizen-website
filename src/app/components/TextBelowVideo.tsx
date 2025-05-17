@@ -39,8 +39,9 @@ export default function TextBelowVideo() {
             fontFamily: `'Helvetica Neue', 'Suisse Int\'l', sans-serif`,
           }}
         >
-          We are a dedicated team crafting innovative websites that elevate your brand with cutting-edge design and seamless functionality.
+          We design digital experiences that go beyond aesthetics, blending bold creativity with flawless performance to bring your brand to life.
         </p>
+
 
         <Hoverable>
           <Link

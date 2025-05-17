@@ -6,8 +6,8 @@ export default function TextWithEffect() {
   const textLines = [
     ["C", "R", "E", "A", "T", "I", "V", "E"],
     ["D", "E", "S", "I", "G", "N"],
-    ["I", "S", " ", "E", "V", "E", "R", "Y", "T", "H", "I", "N", "G"],
-    ["W", "E", "B", " ", "D", "E", "S", "I", "G", "N", " ", "M", "A", "T", "T", "E", "R", "S", "."]
+    ["D", "R", "I", "V", "E", "S", " ", "I", "N", "N", "O", "V", "A", "T", "I", "O", "N"],
+    ["G", "R", "E", "A", "T", " ", "D", "E", "S", "I", "G", "N", " ", "C", "H", "A", "N", "G", "E", "S", " ", "E", "V", "E", "R", "Y", "T", "H", "I", "N", "G"]
   ];
 
   const sectionRefs = useRef<(HTMLParagraphElement | null)[]>([]);
@@ -34,7 +34,7 @@ export default function TextWithEffect() {
   }, []);
 
   return (
-    <section className="bg-[var(--background)] text-[var(--foreground)] px-6 md:px-28 py-32">
+    <section className="bg-[var(--background)] text-[var(--foreground)] px-6 md:px-28 pt-20 pb-24 sm:pt-28 sm:pb-32">
       <div className="max-w-[90%] mx-0 flex flex-col gap-6">
         {textLines.map((line, lineIndex) => (
           <p
@@ -46,7 +46,11 @@ export default function TextWithEffect() {
               font-normal font-serif leading-tight
               ${lineIndex === 1 ? "pl-8 md:pl-16" : ""}
               text-left
-              ${lineIndex === 3 ? "text-[36px] md:text-[56px]" : "text-[40px] md:text-[80px]"}
+              ${
+                lineIndex === 3
+                  ? "text-[20px] sm:text-[28px] md:text-[56px]"
+                  : "text-[24px] sm:text-[36px] md:text-[80px]"
+              }
               m-0
             `}
           >
