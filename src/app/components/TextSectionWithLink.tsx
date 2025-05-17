@@ -40,7 +40,7 @@ export default function TextSectionWithLink() {
       <div className="max-w-[90%] mx-0 flex flex-col gap-6">
         {textLines.map((line, index) => {
           const skipIndexes = new Set<number>();
-          const elements: JSX.Element[] = [];
+          const elements: React.ReactElement[] = [];
 
           for (let i = 0; i < line.length; i++) {
             if (skipIndexes.has(i)) continue;
