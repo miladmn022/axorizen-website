@@ -1,4 +1,5 @@
 
+"use client";
 import AboutHero from "./AboutHero";
 
 export default function AboutPage() {
