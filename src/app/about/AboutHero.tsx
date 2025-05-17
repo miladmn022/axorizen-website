@@ -105,7 +105,10 @@ export default function AboutHero() {
             return (
               <p
                 key={i}
-                ref={(el) => (heroRefs.current[i] = el)}
+                ref={(el) => {
+                heroRefs.current[i] = el;
+                }}
+
                 className={`text-[40px] md:text-[80px] font-bold tracking-tight leading-tight m-0 text-center ${alignment}`}
               >
                 {line.map((char, j) => (
