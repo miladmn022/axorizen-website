@@ -1,10 +1,10 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import CustomCursor from "./components/CustomCursor";
 import { CursorProvider } from "./context/CursorProvider";
+import RootWrapper from "./components/RootWrapper"; // جدید
+import CustomCursor from "./components/CustomCursor";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
-import RootWrapper from "./components/RootWrapper"; // جدید
 
 const inter = Inter({ subsets: ["latin"] });
 

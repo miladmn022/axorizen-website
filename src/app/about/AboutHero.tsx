@@ -171,23 +171,26 @@ export default function AboutHero() {
         </div>
       </section>
 
-      {/* PARAGRAPH 2 (CENTERED) */}
+      {/* PARAGRAPH 2 (CENTERED, BIGGER + BOLD TEXT) */}
       <section className="bg-[var(--background)] text-[var(--foreground)] px-6 md:px-20 py-20">
         <div className="text-center space-y-3">
           {paragraphLines.map((line, i) => (
-            <p key={i} className="text-[24px] md:text-[36px] font-normal tracking-tight leading-snug">
+            <p
+              key={i}
+              className="text-[30px] md:text-[48px] font-semibold tracking-tight leading-snug"
+            >
               {line}
             </p>
           ))}
         </div>
       </section>
 
-      {/* PARAGRAPH 3 (RIGHT, but LEFT-aligned) */}
+      {/* PARAGRAPH 3 (RIGHT-ALIGNED EVEN MORE) */}
       <section
         ref={whiteSectionRef}
         className="relative z-0 px-6 md:px-20 py-24 bg-[var(--background)] text-[var(--foreground)]"
       >
-        <div className="w-full md:w-[70%] ml-auto text-left space-y-4">
+        <div className="w-full md:w-[70%] ml-auto md:mr-[12%] text-left space-y-4">
           {philosophyLines.map((line, i) => (
             <p
               key={i}

@@ -21,7 +21,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       document.body.classList.add(stored);
       document.body.classList.remove(stored === "dark" ? "light" : "dark");
     }
-  }, []);
+  }, [toggleTheme]);
 
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
