@@ -1,10 +1,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { CursorProvider } from "./context/CursorProvider";
-import RootWrapper from "./components/RootWrapper"; // جدید
-import CustomCursor from "./components/CustomCursor";
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
+import RootWrapper from "./components/RootWrapper";
+import ThemeProvider from "./components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,10 +21,12 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className={`${inter.className} dark`}>
-        <CursorProvider>
-          <RootWrapper>{children}</RootWrapper>
-        </CursorProvider>
+      <body className={inter.className}>
+        <ThemeProvider>
+          <CursorProvider>
+            <RootWrapper>{children}</RootWrapper>
+          </CursorProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
