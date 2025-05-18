@@ -14,11 +14,11 @@ const projects = [
     label: "Amin Tarabar Co.",
   },
   {
-    url: "https:/pnslogistics.ca",
+    url: "https://pnslogistics.ca",
     label: "PNS Logistics Co. Canada",
   },
   {
-    url: "https:/pishronavgan.com",
+    url: "https://pishronavgan.com/",
     label: "Pishro Navgan Siraf Co.",
   },
 ];
