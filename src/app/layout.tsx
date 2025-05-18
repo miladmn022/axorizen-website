@@ -13,6 +13,14 @@ import Cookies from "js-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
+
+// اضافه کردن تایپ برای window.gtag به تایپ‌اسکریپت
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 const loadGoogleAnalytics = (measurementId: string) => {
   if (!window.gtag) {
     const script1 = document.createElement("script");
@@ -45,6 +53,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body className={inter.className}>
         <CustomCursor />
         <NavBar />
