@@ -13,11 +13,11 @@ import Cookies from "js-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// متادیتا در src/app/head.tsx باید باشه (نه اینجا)
 
-// اضافه کردن تایپ برای window.gtag به تایپ‌اسکریپت
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -53,9 +53,6 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
       <body className={inter.className}>
         <CustomCursor />
         <NavBar />
