@@ -1,16 +1,13 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 
 export default function CustomCursor() {
   const [enabled, setEnabled] = useState(false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-
-  const springX = useSpring(mouseX, { stiffness: 400, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 400, damping: 20 });
 
   const [isHovering, setIsHovering] = useState(false);
 
@@ -49,12 +46,11 @@ export default function CustomCursor() {
         bg-white mix-blend-difference
       `}
       style={{
-        x: springX,
-        y: springY,
+        x: mouseX,
+        y: mouseY,
         translateX: "-50%",
         translateY: "-50%",
       }}
-      transition={{ type: "spring", stiffness: 400, damping: 20 }}
     />
   );
 }

@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import MirroredImageSection from "../components/MirroredImageSection";
+import TextSectionWithLink from "../components/TextSectionWithLink";
 
 const heroLines = [
   ["I", "D", "E", "N", "T", "I", "T", "Y"],
@@ -212,6 +213,7 @@ export default function AboutHero() {
       </section>
 
       <MirroredImageSection />
+      <TextSectionWithLink />
     </>
   );
 }

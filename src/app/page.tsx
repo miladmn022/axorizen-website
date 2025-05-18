@@ -12,6 +12,7 @@ import TextBelowTwoImage from "./components/TextBelowTwoImage";
 import MirroredImageSection from "./components/MirroredImageSection";
 import OurServices from "./components/OurServices";
 import FullImageZoomSection from "./components/FullImageZoomSection";
+import TextSectionWithLink from "./components/TextSectionWithLink";
 import LoadingScreen from "./components/LoadingScreen";
 
 export default function Home() {
@@ -37,6 +38,7 @@ export default function Home() {
       <MirroredImageSection />
       <OurServices />
       <FullImageZoomSection />
+      <TextSectionWithLink />
     </Fragment>
   );
 }

@@ -6,7 +6,7 @@ export default function AboutPage() {
   return (
     <main>
       <AboutHero />
-      {/* مراحل بعدی اینجا اضافه می‌شه */}
+      {}
     </main>
   );
 }

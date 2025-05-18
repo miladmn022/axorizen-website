@@ -2,23 +2,24 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import TextSectionWithLink from "../components/TextSectionWithLink";
 
 const projects = [
   {
     url: "https://pns-project.com",
-    label: "PNS Project",
+    label: "PNS Project GmbH",
   },
   {
     url: "https://www.amintarabar.com/?lang=en",
-    label: "Amin Tarabar",
+    label: "Amin Tarabar Co.",
   },
   {
-    url: "https://pioneer-navy.ae",
-    label: "Pioneer Navy Shipping",
+    url: "https://pnslogistics.ca",
+    label: "PNS Logistics Co. Canada",
   },
   {
     url: "https://pishronavgan.com",
-    label: "Pishro Navgan Siraf",
+    label: "Pishro Navgan Siraf Co.",
   },
 ];
 
@@ -35,6 +36,7 @@ export default function ProjectsPage() {
   }, []);
 
   return (
+    <>
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] py-24 px-6 md:px-20">
       <h1 className="text-center text-4xl md:text-6xl font-light tracking-widest mb-6 uppercase">
         Projects
@@ -101,5 +103,8 @@ export default function ProjectsPage() {
         ))}
       </div>
     </div>
+    <TextSectionWithLink />
+    </>
   );
+  
 }
