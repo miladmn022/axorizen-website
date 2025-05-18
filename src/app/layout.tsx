@@ -1,3 +1,5 @@
+"use client";
+
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { CursorProvider } from "./context/CursorProvider";
@@ -5,12 +7,28 @@ import CustomCursor from "./components/CustomCursor";
 import ThemeProvider from "./components/ThemeProvider";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import CookieConsentBanner from "./components/CookieConsentBanner";
+import { useEffect } from "react";
+import Cookies from "js-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Axorizen",
-  description: "Portfolio website for Axorizen.com",
+const loadGoogleAnalytics = (measurementId: string) => {
+  if (!window.gtag) {
+    const script1 = document.createElement("script");
+    script1.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    script1.async = true;
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement("script");
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${measurementId}');
+    `;
+    document.head.appendChild(script2);
+  }
 };
 
 export default function RootLayout({
@@ -18,17 +36,22 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    const hasConsent = Cookies.get("axorizenCookieConsent") === "true";
+    if (hasConsent) {
+      loadGoogleAnalytics("G-42TYVE9LXH");
+    }
+  }, []);
+
   return (
     <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
       <body className={inter.className}>
         <CustomCursor />
         <NavBar />
         <ThemeProvider>
           <CursorProvider>
-          {children}
+            {children}
+            <CookieConsentBanner />
           </CursorProvider>
         </ThemeProvider>
         <Footer />
