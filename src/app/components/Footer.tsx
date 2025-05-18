@@ -33,7 +33,7 @@ export default function Footer() {
           </Hoverable>
           <Hoverable>
             <a
-              href="https://www.linkedin.com/in/milad_mahdipour"
+              href="https://www.linkedin.com/in/milad-mahdipour-9264b670/"
               target="_blank"
               rel="noopener noreferrer"
               className="block text-[var(--foreground)] opacity-80 hover:opacity-100 transition"
