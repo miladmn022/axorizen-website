@@ -6,7 +6,7 @@ import TextSectionWithLink from "../components/TextSectionWithLink";
 
 const projects = [
   {
-    url: "https://www.pns-project.com",
+    url: "https://pns-project.com",
     label: "PNS Project GmbH",
   },
   {
@@ -14,11 +14,11 @@ const projects = [
     label: "Amin Tarabar Co.",
   },
   {
-    url: "https://www.pnslogistics.ca",
+    url: "https:/pnslogistics.ca",
     label: "PNS Logistics Co. Canada",
   },
   {
-    url: "https://www.pishronavgan.com",
+    url: "https:/pishronavgan.com",
     label: "Pishro Navgan Siraf Co.",
   },
 ];
