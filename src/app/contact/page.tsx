@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export default function ContactPage() {
   return (
     <section className="theme-section min-h-screen flex flex-col justify-center items-center px-6 md:px-20 py-32">
@@ -43,7 +45,16 @@ export default function ContactPage() {
           </a>
         </p>
 
-        <p className="mt-10 text-sm sm:text-base md:text-lg opacity-60">
+        <p>
+          <Link
+            href="/privacy-policy"
+            className="underline hover:text-[var(--foreground)] mt-4 inline-block"
+          >
+            Privacy Policy
+          </Link>
+        </p>
+
+        <p className="mt-10 text-sm sm:text-base md:text-lg opacity-60 max-w-xl">
           I’d love to hear from you, just say hi or share your next idea 
         </p>
       </div>

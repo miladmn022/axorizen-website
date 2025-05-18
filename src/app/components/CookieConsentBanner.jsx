@@ -36,12 +36,12 @@ export default function CookieConsentBanner() {
           borderRadius: "16px",
           padding: "1.5rem",
           width: "100%",
-          maxWidth: "36rem", // تغییر عرض
+          maxWidth: "36rem", 
           boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          height: showMore ? "auto" : "120px", // بزرگترش کردیم
+          height: showMore ? "auto" : "120px", 
           transition: "all 0.3s ease",
           overflow: "hidden",
         }}
