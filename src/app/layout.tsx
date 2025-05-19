@@ -13,7 +13,7 @@ import Cookies from "js-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// متادیتا در src/app/head.tsx باید باشه (نه اینجا)
+
 
 declare global {
   interface Window {
