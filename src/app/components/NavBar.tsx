@@ -67,7 +67,7 @@ export default function NavBar() {
                   ? "/images/Logo-Axorizen(white).svg"
                   : "/images/Logo-Axorizen(black).svg"
               }
-              alt="Axorizen Logo"
+              alt="Axorizen"
               width={140}
               height={35}
               className="object-contain h-[35px] w-auto"
