@@ -7,9 +7,9 @@ import CustomCursor from "./components/CustomCursor";
 import ThemeProvider from "./components/ThemeProvider";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import CookieConsentBanner from "./components/CookieConsentBanner";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
+import CustomCookieConsent from "./components/CustomCookieConsent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -54,12 +54,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        
         <CustomCursor />
         <NavBar />
         <ThemeProvider>
           <CursorProvider>
+            <CustomCookieConsent />
             {children}
-            <CookieConsentBanner />
           </CursorProvider>
         </ThemeProvider>
         <Footer />

@@ -11,18 +11,30 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentTheme, setCurrentTheme] = useState("dark");
 
-  useEffect(() => {
-    const updateTheme = () => {
-      if (document.body.classList.contains("light")) {
-        setCurrentTheme("light");
-      } else {
-        setCurrentTheme("dark");
-      }
-    };
+  const updateTheme = () => {
+    if (document.body.classList.contains("light")) {
+      setCurrentTheme("light");
+    } else {
+      setCurrentTheme("dark");
+    }
+  };
 
-    updateTheme(); // هنگام بارگذاری
+  useEffect(() => {
+    updateTheme(); // بار اول اجرا
+
+    // رصد تغییرات کلاس body
+    const observer = new MutationObserver(() => {
+      updateTheme();
+    });
+    observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+    // گوش دادن به اسکرول اگر تم با اسکرول تغییر می‌کنه
     window.addEventListener("scroll", updateTheme);
-    return () => window.removeEventListener("scroll", updateTheme);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", updateTheme);
+    };
   }, []);
 
   return (
@@ -32,9 +44,7 @@ export default function NavBar() {
         ${scrolled > 50 ? "bg-[var(--background)]/90 backdrop-blur-sm" : "bg-transparent"}
       `}
     >
-      {/* لوگو */}
       <div className="flex items-center gap-3">
-        {/* موبایل - A */}
         <div className="block md:hidden h-[32px] w-[32px]">
           <Image
             src={
@@ -49,14 +59,13 @@ export default function NavBar() {
           />
         </div>
 
-        {/* دسکتاپ - Axorizen */}
         <Hoverable>
           <Link href="/" className="hidden md:block">
             <Image
               src={
                 currentTheme === "dark"
-                ? "/images/Logo-Axorizen(white).svg"
-                : "/images/Logo-Axorizen(black).svg"
+                  ? "/images/Logo-Axorizen(white).svg"
+                  : "/images/Logo-Axorizen(black).svg"
               }
               alt="Axorizen Logo"
               width={140}
@@ -67,7 +76,6 @@ export default function NavBar() {
         </Hoverable>
       </div>
 
-      {/* آیکون منو در موبایل */}
       <div
         className="md:hidden flex flex-col gap-[5px] cursor-pointer z-[1100]"
         onClick={() => setIsOpen(!isOpen)}
@@ -77,7 +85,6 @@ export default function NavBar() {
         <span className="w-6 h-[2px] bg-[var(--foreground)]" />
       </div>
 
-      {/* منوی دسکتاپ */}
       <div className="hidden md:flex items-center gap-6">
         {[
           { href: "/", label: "Home" },
@@ -96,7 +103,6 @@ export default function NavBar() {
         ))}
       </div>
 
-      {/* منوی موبایل */}
       {isOpen && (
         <div className="absolute top-full right-0 w-full bg-[var(--background)]/95 flex flex-col items-end px-6 py-4 md:hidden z-[1050]">
           {[
