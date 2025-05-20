@@ -1,10 +1,10 @@
 const seoConfig = {
   siteName: "Axorizen",
-  defaultTitle: "Axorizen – Creative Studio",
-  description: "We design bold, emotional digital experiences that stand out.",
+  defaultTitle: "Axorizen – Creative Studio | Web Design & Digital Marketing",
+  description: "We design bold, emotional digital experiences that help your brand grow with expert web design and digital marketing solutions.",
   url: "https://axorizen.com",
   locale: "en_US",
-  image: "/og-image.jpg", // در public قرار بگیره
+  image: "https://axorizen.com/images/og-image.jpg",
 
   twitter: {
     handle: "@axorizen",
