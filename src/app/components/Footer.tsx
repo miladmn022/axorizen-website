@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.5fr_0.8fr_0.8fr] gap-10 md:gap-40">
         {/* ایمیل و تلفن */}
         <div>
-          <p className="mb-2 opacity-85">info@axorizen.com</p>
+          <p className="mb-2 opacity-85">hello@axorizen.com</p>
           <p className="opacity-85">+98 912 949 59 07</p>
         </div>
 
