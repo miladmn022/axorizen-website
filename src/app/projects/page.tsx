@@ -14,8 +14,8 @@ const projects = [
     label: "Amin Tarabar Co.",
   },
   {
-    url: "https://pnslogistics.ca",
-    label: "PNS Logistics Co. Canada",
+    url: "http://pioneer-navy.ae",
+    label: "Pioneer Navy Shipping Dubai",
   },
   {
     url: "https://pishronavgan.com/",
