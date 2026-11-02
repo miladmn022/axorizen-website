@@ -4,21 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Milad Mahdipour · Axorizen</title>
-<meta name="description" content="Milad Mahdipour, web designer and founder of Axorizen. Phone, email, WhatsApp and Telegram.">
+<meta name="description" content="Milad Mahdipour, web designer at Axorizen. Phone, email, WhatsApp and Telegram.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#07080b">
 <link rel="icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/images/Logo-A(white).png">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Milad Mahdipour · Axorizen">
-<meta property="og:description" content="Web Designer · Founder. Let's build what's next.">
+<meta property="og:description" content="Web Designer. Let's build what's next.">
 <meta property="og:url" content="https://www.axorizen.com/card">
 <meta property="og:image" content="https://www.axorizen.com/images/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
+@font-face{font-family:"Inter";src:url("/fonts/inter-latin.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Geist Mono";src:url("/fonts/geist-mono-latin.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
 /* Layout: one centered flip-card on a deep night field, a thin "horizon" line running through everything, contact actions stacked below. Single dark look, matching axorizen.com. */
 :root{
   --void:#07080b;
@@ -28,9 +27,9 @@
   --mute:#8a8fa0;
   --horizon:#ed1e25;
   --horizon-2:#ff5a4f;
-  --f-display:"Syne","Helvetica Neue",Arial,sans-serif;
-  --f-body:"Manrope","Helvetica Neue",Arial,sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --f-display:"Inter","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Inter","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,Menlo,monospace;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -88,7 +87,7 @@ body::after{ /* faint horizon glow */
 .back::before,.back::after{display:none}
 .head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;gap:4cqw;min-width:0}
 .who{min-width:0}
-.who h1{margin:0;font-family:var(--f-display);font-weight:700;font-size:4.9cqw;line-height:1.1;letter-spacing:0;white-space:nowrap}
+.who h1{margin:0;font-family:var(--f-display);font-weight:700;font-size:5.2cqw;line-height:1.1;letter-spacing:-.02em;white-space:nowrap}
 .who p{margin:1.6cqw 0 0;font-family:var(--f-mono);font-size:2.3cqw;letter-spacing:.2em;text-transform:uppercase;color:var(--horizon);white-space:nowrap}
 .mini{flex:none;opacity:.95}
 .mini svg{display:block;width:7cqw;height:auto;aspect-ratio:31.39/33.43}
@@ -102,7 +101,7 @@ body::after{ /* faint horizon glow */
 .hint button:focus-visible{outline:2px solid var(--horizon);outline-offset:4px}
 
 /* ---------- actions ---------- */
-.intro h2{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(26px,7vw,34px);line-height:1.05;letter-spacing:-.015em;text-wrap:balance}
+.intro h2{margin:0;font-family:var(--f-display);font-weight:700;letter-spacing:-.03em;font-size:clamp(26px,7vw,34px);line-height:1.05;letter-spacing:-.015em;text-wrap:balance}
 .intro h2 em{font-style:normal;background:linear-gradient(90deg,var(--horizon),var(--horizon-2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .intro p{margin:12px 0 0;color:var(--mute);line-height:1.6;font-size:15px;max-width:40ch}
 
@@ -124,7 +123,7 @@ a.row:hover .arrow{transform:translateX(3px);color:var(--ink)}
 
 .qr{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding:20px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}
 #qrbox{width:112px;height:112px;background:#f3f4f7;border-radius:10px;padding:8px;display:grid;place-items:center}
-#qrbox img,#qrbox canvas{width:96px!important;height:96px!important}
+#qrbox svg{width:96px;height:96px;display:block}
 .qr h3{margin:0;font-family:var(--f-display);font-weight:700;font-size:18px}
 .qr p{margin:6px 0 0;color:var(--mute);font-size:13.5px;line-height:1.55}
 
@@ -179,7 +178,7 @@ a.row:hover .arrow{transform:translateX(3px);color:var(--ink)}
         <div class="head">
           <div class="who">
             <h1>Milad Mahdipour</h1>
-            <p>Web Designer · Founder</p>
+            <p>Web Designer</p>
           </div>
           <div class="mini"><svg viewBox="0 0 31.39 33.43" aria-hidden="true"><use href="#amark"/></svg></div>
         </div>
@@ -228,10 +227,10 @@ a.row:hover .arrow{transform:translateX(3px);color:var(--ink)}
   </section>
 
   <section class="qr reveal">
-    <div id="qrbox" aria-label="QR code linking to www.axorizen.com"></div>
+    <div id="qrbox"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges" role="img" aria-label="QR code for axorizen.com/card"><path fill="#07080b" d="M2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM11 2h1v1h-1zM12 2h1v1h-1zM13 2h1v1h-1zM16 2h1v1h-1zM19 2h1v1h-1zM20 2h1v1h-1zM21 2h1v1h-1zM24 2h1v1h-1zM25 2h1v1h-1zM26 2h1v1h-1zM27 2h1v1h-1zM28 2h1v1h-1zM29 2h1v1h-1zM30 2h1v1h-1zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM11 3h1v1h-1zM12 3h1v1h-1zM13 3h1v1h-1zM14 3h1v1h-1zM15 3h1v1h-1zM20 3h1v1h-1zM21 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM6 4h1v1h-1zM8 4h1v1h-1zM14 4h1v1h-1zM17 4h1v1h-1zM21 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM26 4h1v1h-1zM27 4h1v1h-1zM28 4h1v1h-1zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM11 5h1v1h-1zM15 5h1v1h-1zM18 5h1v1h-1zM20 5h1v1h-1zM21 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM27 5h1v1h-1zM28 5h1v1h-1zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM13 6h1v1h-1zM15 6h1v1h-1zM18 6h1v1h-1zM19 6h1v1h-1zM20 6h1v1h-1zM21 6h1v1h-1zM24 6h1v1h-1zM26 6h1v1h-1zM27 6h1v1h-1zM28 6h1v1h-1zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h1v1h-1zM16 7h1v1h-1zM17 7h1v1h-1zM18 7h1v1h-1zM19 7h1v1h-1zM20 7h1v1h-1zM21 7h1v1h-1zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM25 8h1v1h-1zM26 8h1v1h-1zM27 8h1v1h-1zM28 8h1v1h-1zM29 8h1v1h-1zM30 8h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM20 9h1v1h-1zM22 9h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM12 10h1v1h-1zM13 10h1v1h-1zM18 10h1v1h-1zM19 10h1v1h-1zM20 10h1v1h-1zM21 10h1v1h-1zM22 10h1v1h-1zM26 10h1v1h-1zM29 10h1v1h-1zM6 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM13 11h1v1h-1zM15 11h1v1h-1zM17 11h1v1h-1zM18 11h1v1h-1zM23 11h1v1h-1zM24 11h1v1h-1zM27 11h1v1h-1zM30 11h1v1h-1zM3 12h1v1h-1zM6 12h1v1h-1zM8 12h1v1h-1zM11 12h1v1h-1zM12 12h1v1h-1zM16 12h1v1h-1zM17 12h1v1h-1zM18 12h1v1h-1zM19 12h1v1h-1zM22 12h1v1h-1zM24 12h1v1h-1zM28 12h1v1h-1zM29 12h1v1h-1zM30 12h1v1h-1zM3 13h1v1h-1zM4 13h1v1h-1zM7 13h1v1h-1zM9 13h1v1h-1zM10 13h1v1h-1zM11 13h1v1h-1zM13 13h1v1h-1zM15 13h1v1h-1zM16 13h1v1h-1zM18 13h1v1h-1zM19 13h1v1h-1zM20 13h1v1h-1zM22 13h1v1h-1zM26 13h1v1h-1zM29 13h1v1h-1zM2 14h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM6 14h1v1h-1zM7 14h1v1h-1zM8 14h1v1h-1zM9 14h1v1h-1zM12 14h1v1h-1zM14 14h1v1h-1zM16 14h1v1h-1zM17 14h1v1h-1zM19 14h1v1h-1zM21 14h1v1h-1zM22 14h1v1h-1zM23 14h1v1h-1zM24 14h1v1h-1zM27 14h1v1h-1zM29 14h1v1h-1zM30 14h1v1h-1zM2 15h1v1h-1zM3 15h1v1h-1zM6 15h1v1h-1zM10 15h1v1h-1zM12 15h1v1h-1zM13 15h1v1h-1zM16 15h1v1h-1zM17 15h1v1h-1zM19 15h1v1h-1zM22 15h1v1h-1zM24 15h1v1h-1zM25 15h1v1h-1zM27 15h1v1h-1zM30 15h1v1h-1zM2 16h1v1h-1zM7 16h1v1h-1zM8 16h1v1h-1zM12 16h1v1h-1zM13 16h1v1h-1zM15 16h1v1h-1zM19 16h1v1h-1zM20 16h1v1h-1zM25 16h1v1h-1zM27 16h1v1h-1zM29 16h1v1h-1zM30 16h1v1h-1zM4 17h1v1h-1zM6 17h1v1h-1zM7 17h1v1h-1zM12 17h1v1h-1zM14 17h1v1h-1zM17 17h1v1h-1zM19 17h1v1h-1zM20 17h1v1h-1zM21 17h1v1h-1zM22 17h1v1h-1zM23 17h1v1h-1zM27 17h1v1h-1zM29 17h1v1h-1zM2 18h1v1h-1zM3 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM18 18h1v1h-1zM19 18h1v1h-1zM22 18h1v1h-1zM23 18h1v1h-1zM24 18h1v1h-1zM25 18h1v1h-1zM27 18h1v1h-1zM29 18h1v1h-1zM30 18h1v1h-1zM5 19h1v1h-1zM7 19h1v1h-1zM14 19h1v1h-1zM15 19h1v1h-1zM17 19h1v1h-1zM18 19h1v1h-1zM19 19h1v1h-1zM22 19h1v1h-1zM23 19h1v1h-1zM24 19h1v1h-1zM27 19h1v1h-1zM28 19h1v1h-1zM30 19h1v1h-1zM2 20h1v1h-1zM4 20h1v1h-1zM5 20h1v1h-1zM6 20h1v1h-1zM7 20h1v1h-1zM8 20h1v1h-1zM10 20h1v1h-1zM11 20h1v1h-1zM16 20h1v1h-1zM17 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM23 20h1v1h-1zM25 20h1v1h-1zM29 20h1v1h-1zM30 20h1v1h-1zM3 21h1v1h-1zM6 21h1v1h-1zM7 21h1v1h-1zM10 21h1v1h-1zM12 21h1v1h-1zM15 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM19 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM27 21h1v1h-1zM29 21h1v1h-1zM2 22h1v1h-1zM3 22h1v1h-1zM5 22h1v1h-1zM6 22h1v1h-1zM7 22h1v1h-1zM8 22h1v1h-1zM9 22h1v1h-1zM11 22h1v1h-1zM12 22h1v1h-1zM13 22h1v1h-1zM14 22h1v1h-1zM16 22h1v1h-1zM17 22h1v1h-1zM19 22h1v1h-1zM21 22h1v1h-1zM22 22h1v1h-1zM23 22h1v1h-1zM24 22h1v1h-1zM25 22h1v1h-1zM26 22h1v1h-1zM10 23h1v1h-1zM12 23h1v1h-1zM13 23h1v1h-1zM16 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM20 23h1v1h-1zM22 23h1v1h-1zM26 23h1v1h-1zM28 23h1v1h-1zM29 23h1v1h-1zM30 23h1v1h-1zM2 24h1v1h-1zM3 24h1v1h-1zM4 24h1v1h-1zM5 24h1v1h-1zM6 24h1v1h-1zM7 24h1v1h-1zM8 24h1v1h-1zM13 24h1v1h-1zM15 24h1v1h-1zM19 24h1v1h-1zM20 24h1v1h-1zM21 24h1v1h-1zM22 24h1v1h-1zM24 24h1v1h-1zM26 24h1v1h-1zM27 24h1v1h-1zM29 24h1v1h-1zM30 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h1v1h-1zM13 25h1v1h-1zM17 25h1v1h-1zM19 25h1v1h-1zM22 25h1v1h-1zM26 25h1v1h-1zM27 25h1v1h-1zM2 26h1v1h-1zM4 26h1v1h-1zM5 26h1v1h-1zM6 26h1v1h-1zM8 26h1v1h-1zM10 26h1v1h-1zM12 26h1v1h-1zM18 26h1v1h-1zM19 26h1v1h-1zM22 26h1v1h-1zM23 26h1v1h-1zM24 26h1v1h-1zM25 26h1v1h-1zM26 26h1v1h-1zM29 26h1v1h-1zM2 27h1v1h-1zM4 27h1v1h-1zM5 27h1v1h-1zM6 27h1v1h-1zM8 27h1v1h-1zM11 27h1v1h-1zM14 27h1v1h-1zM15 27h1v1h-1zM17 27h1v1h-1zM18 27h1v1h-1zM19 27h1v1h-1zM26 27h1v1h-1zM28 27h1v1h-1zM2 28h1v1h-1zM4 28h1v1h-1zM5 28h1v1h-1zM6 28h1v1h-1zM8 28h1v1h-1zM10 28h1v1h-1zM11 28h1v1h-1zM12 28h1v1h-1zM13 28h1v1h-1zM14 28h1v1h-1zM15 28h1v1h-1zM16 28h1v1h-1zM17 28h1v1h-1zM18 28h1v1h-1zM23 28h1v1h-1zM25 28h1v1h-1zM26 28h1v1h-1zM27 28h1v1h-1zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM11 29h1v1h-1zM14 29h1v1h-1zM16 29h1v1h-1zM18 29h1v1h-1zM19 29h1v1h-1zM21 29h1v1h-1zM22 29h1v1h-1zM23 29h1v1h-1zM26 29h1v1h-1zM29 29h1v1h-1zM2 30h1v1h-1zM3 30h1v1h-1zM4 30h1v1h-1zM5 30h1v1h-1zM6 30h1v1h-1zM7 30h1v1h-1zM8 30h1v1h-1zM10 30h1v1h-1zM14 30h1v1h-1zM16 30h1v1h-1zM17 30h1v1h-1zM18 30h1v1h-1zM20 30h1v1h-1zM21 30h1v1h-1zM22 30h1v1h-1zM25 30h1v1h-1zM26 30h1v1h-1zM27 30h1v1h-1zM29 30h1v1h-1zM30 30h1v1h-1z"/></svg></div>
     <div>
-      <h3>Scan to visit</h3>
-      <p>Point a phone camera here to open axorizen.com and see recent projects.</p>
+      <h3>Scan to save this card</h3>
+      <p>Show this screen to someone. Their phone camera opens axorizen.com/card.</p>
     </div>
   </section>
 
@@ -239,7 +238,6 @@ a.row:hover .arrow{transform:translateX(3px);color:var(--ink)}
 </main>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 const card=document.getElementById('card');
 const flip=()=>card.classList.toggle('flipped');
@@ -255,7 +253,6 @@ document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',(
 }));
 function sel(b){const s=b.closest('.row').querySelector('strong');const r=document.createRange();r.selectNodeContents(s);const g=getSelection();g.removeAllRanges();g.addRange(r);show('Selected. Copy it from your keyboard')}
 
-try{new QRCode(document.getElementById('qrbox'),{text:'https://www.axorizen.com',width:192,height:192,colorDark:'#07080b',colorLight:'#f3f4f7',correctLevel:QRCode.CorrectLevel.M})}catch(e){document.getElementById('qrbox').textContent='axorizen.com'}
 </script>
 
 </body>

@@ -1,6 +1,7 @@
 "use client";
 
 import Hoverable from "../components/Hoverable";
+import { openCookieSettings } from "../lib/consent";
 
 export default function Footer() {
   return (
@@ -49,11 +50,19 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* کپی‌رایت */}
-      <div className="w-full px-10 pt-6">
-        <p className="text-sm opacity-70 font-light">
-          © 2025 Axorizen. All rights reserved.
-        </p>
+      {/* کپی‌رایت و لینک‌های حقوقی */}
+      <div className="w-full px-10 pt-6 flex flex-wrap gap-x-6 gap-y-2 items-center text-sm font-light">
+        <p className="opacity-70">© {new Date().getFullYear()} Axorizen. All rights reserved.</p>
+        <a href="/privacy-policy" className="opacity-70 hover:opacity-100 transition underline-offset-2 hover:underline">
+          Privacy Policy
+        </a>
+        <button
+          type="button"
+          onClick={openCookieSettings}
+          className="opacity-70 hover:opacity-100 transition underline-offset-2 hover:underline cursor-pointer"
+        >
+          Cookie settings
+        </button>
       </div>
     </footer>
   );

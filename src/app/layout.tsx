@@ -8,36 +8,49 @@ import ThemeProvider from "./components/ThemeProvider";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { useEffect } from "react";
-import Cookies from "js-cookie";
 import CustomCookieConsent from "./components/CustomCookieConsent";
+import { CONSENT_EVENT, readConsent, type Consent } from "./lib/consent";
 
 const inter = Inter({ subsets: ["latin"] });
 
-
+const GA_ID = "G-42TYVE9LXH";
 
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
   }
 }
 
-const loadGoogleAnalytics = (measurementId: string) => {
-  if (!window.gtag) {
-    const script1 = document.createElement("script");
-    script1.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-    script1.async = true;
-    document.head.appendChild(script1);
-
-    const script2 = document.createElement("script");
-    script2.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${measurementId}');
-    `;
-    document.head.appendChild(script2);
+// Google Analytics is only loaded after the visitor actively opts in (TDDDG §25, Art. 6(1)(a) GDPR).
+function loadGoogleAnalytics() {
+  if (window.gtag) {
+    window.gtag("consent", "update", { analytics_storage: "granted" });
+    return;
   }
-};
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer!.push(arguments);
+  };
+  window.gtag("consent", "default", {
+    analytics_storage: "granted",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+  });
+  window.gtag("js", new Date());
+  window.gtag("config", GA_ID, { allow_google_signals: false, allow_ad_personalization_signals: false });
+
+  const script = document.createElement("script");
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  script.async = true;
+  document.head.appendChild(script);
+}
+
+function stopGoogleAnalytics() {
+  if (window.gtag) window.gtag("consent", "update", { analytics_storage: "denied" });
+}
 
 export default function RootLayout({
   children,
@@ -45,16 +58,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    const hasConsent = Cookies.get("axorizenCookieConsent") === "true";
-    if (hasConsent) {
-      loadGoogleAnalytics("G-42TYVE9LXH");
-    }
+    if (readConsent()?.analytics) loadGoogleAnalytics();
+
+    const onChange = (e: Event) => {
+      const consent = (e as CustomEvent<Consent>).detail;
+      if (consent.analytics) loadGoogleAnalytics();
+      else stopGoogleAnalytics();
+    };
+    window.addEventListener(CONSENT_EVENT, onChange);
+    return () => window.removeEventListener(CONSENT_EVENT, onChange);
   }, []);
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        
         <CustomCursor />
         <NavBar />
         <ThemeProvider>
